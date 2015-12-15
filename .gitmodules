@@ -1,0 +1,3 @@
+[submodule "floppybird"]
+	path = floppybird
+	url = https://github.com/amlewis/floppybird.git
