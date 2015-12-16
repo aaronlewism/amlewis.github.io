@@ -1,11 +1,14 @@
 /*
     WIP
 */
+// Create wand object
 (function(obj) {
     var wand = {};
-    a.enabled = false;
+    wand.enabled = false;
     obj.wand = wand
 })(window);
+
+// Initialize wand object
 (function(window, document, wand) {
   function execute(url) 
   {
@@ -13,14 +16,14 @@
     var iframe = document.createElement("IFRAME");
     iframe.style.display = "none";
     iframe.setAttribute('src', url);
-    alert(13)
     document.documentElement.appendChild(iframe);
     document.documentElement.removeChild(iframe);
     iframe = null;
-    alert(20)
   }
 
   wand.execute = execute
 })(window, document, wand);
 
+alert(14)
 wand.execute("wand-client-action:blah")
+alert(20)
