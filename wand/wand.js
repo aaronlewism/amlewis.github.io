@@ -8,7 +8,7 @@ function execute(url)
   var iframe = document.createElement("IFRAME");
   iframe.style.display = "none";
   iframe.setAttribute('src', url);
-  alert(10)
+  alert(12)
   document.documentElement.appendChild(iframe);
   document.documentElement.removeChild(iframe);
   iframe = null;
