@@ -15,4 +15,4 @@ function execute(url)
   alert(20)
 }
 
-execute("wand_client://blah")
+execute("wand_client:blah")
