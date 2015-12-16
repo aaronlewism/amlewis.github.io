@@ -8,9 +8,11 @@ function execute(url)
   var iframe = document.createElement("IFRAME");
   iframe.style.display = "none";
   iframe.src = url;
+  alert(10)
   document.documentElement.appendChild(iframe);
   document.documentElement.removeChild(iframe);
   iframe = null;
+  alert(20)
 }
 
-window.alert(5 + 6);
+execute("wand_client://blah")
