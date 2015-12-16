@@ -7,7 +7,7 @@ function execute(url)
   // Credit to http://stackoverflow.com/a/13176471
   var iframe = document.createElement("IFRAME");
   iframe.style.display = "none";
-  iframe.src = url;
+  iframe.setAttribute('src', url);
   alert(10)
   document.documentElement.appendChild(iframe);
   document.documentElement.removeChild(iframe);
