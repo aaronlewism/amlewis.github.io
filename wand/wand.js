@@ -23,7 +23,3 @@
 
   wand.execute = execute
 })(window, document, wand);
-
-alert(14)
-wand.execute("wand-client-action:blah")
-alert(20)
