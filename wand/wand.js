@@ -11,9 +11,9 @@
 // Initialize wand object
 (function(window, document, wand) {
   function execute(method, args, callback) {
-    url = "wand-client-action://" + method + ";callback=aha";
+    url = "wand-client-action://" + method + "?c=aha";
     if (args) {
-      url += "?args=" + encodeURIComponent(JSON.stringify(args));
+      url += "&a=" + encodeURIComponent(JSON.stringify(args));
     }
     execute_url(url);
   }
