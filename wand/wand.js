@@ -48,13 +48,11 @@
   }
 
   function _handleClientResponse(encodedCallbackHandle, status, result) {
-    alert("Ping!")
     var callbackHandle = decodeURIComponent(encodedCallbackHandle)
     if (wand._callbacks[callbackHandle]) {
       var callback = wand._callbacks[callbackHandle]
       delete wand._callbacks[callbackHandle]
       setTimeout(function() {
-        alert("Boing!")
         callback(status, decodeURIComponent(result))
       })
     }
