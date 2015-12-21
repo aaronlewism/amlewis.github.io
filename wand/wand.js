@@ -5,17 +5,17 @@
 (function(obj) {
     var wand = {};
     wand.enabled = false;
-    obj.wand = wand
+    obj.wand = wand;
 })(window);
 
 // Initialize wand object
 (function(window, document, wand) {
   function execute(method, args, callback) {
-    url = "wand-client-action://" + method + ";callback=aha"
+    url = "wand-client-action://" + method + ";callback=aha";
     if args {
-      url += "?args=" + encodeURIComponent(JSON.stringify(args))
+      url += "?args=" + encodeURIComponent(JSON.stringify(args));
     }
-    execute_url(url)
+    execute_url(url);
   }
 
   function execute_url(url) {
@@ -28,7 +28,7 @@
     iframe = null;
   }
 
-  wand.getUser = function (callback) {
-    execute("getUser", null, callback) 
+  wand.getUser = function(callback) {
+    execute("getUser", null, callback);
   }
 })(window, document, wand);
