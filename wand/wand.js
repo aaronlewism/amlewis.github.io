@@ -10,8 +10,15 @@
 
 // Initialize wand object
 (function(window, document, wand) {
-  function execute(url) 
-  {
+  function execute(method, args, callback) {
+    url = "wand-client-action://" + method + ";callback=aha"
+    if args {
+      url += "?args=" + encodeURIComponent(JSON.stringify(args))
+    }
+    execute_url(url)
+  }
+
+  function execute_url(url) {
     // Credit to http://stackoverflow.com/a/13176471
     var iframe = document.createElement("IFRAME");
     iframe.style.display = "none";
@@ -21,5 +28,7 @@
     iframe = null;
   }
 
-  wand.execute = execute
+  wand.getUser = function (callback) {
+    execute("getUser", null, callback) 
+  }
 })(window, document, wand);
