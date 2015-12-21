@@ -10,12 +10,16 @@
 
 // Initialize wand object
 (function(window, document, wand) {
-  function execute(method, args, callback) {
+  wand._callbacks = {}
+  var uniqueId = 0
+
+  function _execute(method, args, callback) {
     var url = "wand-client-action://" + method;
-    var argsString = null
+    var argsString = null;
+    var callbackHandle = _prepCallback(callback);
     if (callback) {
       argsString = (argsString == null) ? "" : argsString + "&"
-      argsString += "c=aha"
+      argsString += "c="
     }
     if (args) {
       argsString = (argsString == null) ? "" : argsString + "&"
@@ -24,10 +28,16 @@
     if (argsString) {
       url += "?" + argsString
     }
-    execute_url(url);
+    _execute_url(url);
   }
 
-  function execute_url(url) {
+  function _prepCallback(callback) {
+    var callbackHandle = "__CALLBACK__" + (uniqueId++);
+    wand._callbacks[callbackHandle] = callback;
+    return callbackHandle;
+  }
+
+  function _execute_url(url) {
     // Credit to http://stackoverflow.com/a/13176471
     var iframe = document.createElement("IFRAME");
     iframe.style.display = "none";
@@ -37,7 +47,15 @@
     iframe = null;
   }
 
+  function _handleClientResponse(callbackHandle, status, result) {
+    if (wand._callbacks[callbackHandle]) {
+      var callback = wand._callbacks[callbackHandle]
+      delete wand._callbacks[callbackHandle]
+      setTimeout(function() {callback(status, result)})
+    }
+  }
+
   wand.getUser = function(callback) {
-    execute("getUser", null, callback);
+    _execute("getUser", null, callback);
   }
 })(window, document, wand);
