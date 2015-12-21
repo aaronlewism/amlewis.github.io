@@ -14,7 +14,7 @@
   var uniqueId = 0
 
   function _execute(method, args, callback) {
-    var url = "wand-client-action://" + method;
+    var url = "wand-client-action:///" + method;
     var argsString = null;
     if (callback) {
       var callbackHandle = _prepCallback(callback);
