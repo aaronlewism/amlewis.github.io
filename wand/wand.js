@@ -12,7 +12,7 @@
 (function(window, document, wand) {
   function execute(method, args, callback) {
     url = "wand-client-action://" + method + ";callback=aha";
-    if args {
+    if (args) {
       url += "?args=" + encodeURIComponent(JSON.stringify(args));
     }
     execute_url(url);
