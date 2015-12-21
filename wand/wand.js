@@ -60,7 +60,10 @@
     }
   }
 
-  wand.getUser = function(callback) {
+  function getUser(callback) {
     _execute("getUser", null, callback);
   }
+
+  wand._handleClientResponse = _handleClientResponse
+  wand.getUser = getUser
 })(window, document, wand);
