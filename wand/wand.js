@@ -16,10 +16,10 @@
   function _execute(method, args, callback) {
     var url = "wand-client-action://" + method;
     var argsString = null;
-    var callbackHandle = _prepCallback(callback);
     if (callback) {
+      var callbackHandle = _prepCallback(callback);
       argsString = (argsString == null) ? "" : argsString + "&"
-      argsString += "c="
+      argsString += "c=" + encodeURIComponent(callbackHandle)
     }
     if (args) {
       argsString = (argsString == null) ? "" : argsString + "&"
@@ -47,11 +47,12 @@
     iframe = null;
   }
 
-  function _handleClientResponse(callbackHandle, status, result) {
+  function _handleClientResponse(encodedCallbackHandle, status, result) {
+    var callbackHandle = decodeURIComponent(encodedCallbackHandle)
     if (wand._callbacks[callbackHandle]) {
       var callback = wand._callbacks[callbackHandle]
       delete wand._callbacks[callbackHandle]
-      setTimeout(function() {callback(status, result)})
+      setTimeout(function() {callback(status, decodeURIComponent(result))})
     }
   }
 
