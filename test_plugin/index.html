@@ -10,6 +10,19 @@ wand.getUser(function (status, result) {
   document.body.appendChild(h);
 })
 
+wand.httpRequest(
+  {
+    "url": "http://amlewis.github.io/test_plugin/index.html"
+  },
+  function (status, result) {
+    var t = document.createTextNode(JSON.stringify(result));
+    var h = document.createElement("H1");
+    h.appendChild(t);
+    document.body.appendChild(h);
+  }
+)
+
+
 var t = document.createTextNode("RED RUM");
 var h = document.createElement("H2");
 h.appendChild(t);
