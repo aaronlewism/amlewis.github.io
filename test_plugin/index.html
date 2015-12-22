@@ -15,7 +15,7 @@ wand.httpRequest(
     "url": "http://amlewis.github.io/test_plugin/index.html"
   },
   function (status, result) {
-    var t = document.createTextNode(JSON.stringify(result));
+    var t = document.createTextNode(JSON.stringify(result.body));
     var h = document.createElement("H1");
     h.appendChild(t);
     document.body.appendChild(h);
