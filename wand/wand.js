@@ -53,7 +53,7 @@
       var callback = wand._callbacks[callbackHandle]
       delete wand._callbacks[callbackHandle]
       setTimeout(function() {
-        callback(status, decodeURIComponent(result))
+        callback(status, JSON.parse(decodeURIComponent(result)))
       })
     }
   }
