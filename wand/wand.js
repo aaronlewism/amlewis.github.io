@@ -62,6 +62,11 @@
     _execute("getUser", null, callback);
   }
 
+  function httpRequest(request, callback) {
+    _execute("httpRequest", request, callback)
+  }
+
   wand._handleClientResponse = _handleClientResponse
   wand.getUser = getUser
+  wand.httpRequest = httpRequest
 })(window, document, wand);
