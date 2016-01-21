@@ -2,7 +2,7 @@ Lime Juice
 <script src="../wand/wand.js"></script>
 <script language="javascript"> 
 <!-- 
-alert(14)
+alert(15)
 wand.getUser(function (status, result) {
   var t = document.createTextNode(JSON.stringify(result));
   var h = document.createElement("H1");
@@ -56,7 +56,12 @@ wand.handleTypedData(
     "rating": 0.8,
     "review_count": 88
   },
-  null
+  function (status, result) {
+    var t = document.createTextNode("Handle Typed Data: " + JSON.stringify(status));
+    var h = document.createElement("H1");
+    h.appendChild(t);
+    document.body.appendChild(h);
+  }
 )
 //--> 
 </script> 
