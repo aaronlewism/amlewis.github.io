@@ -67,7 +67,7 @@
   }
 
   function handleTypedData(data, callback) {
-    _execute("handleTypedData". data, callback)
+    _execute("handleTypedData", data, callback)
   }
 
   wand._handleClientResponse = _handleClientResponse
