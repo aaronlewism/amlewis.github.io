@@ -73,4 +73,5 @@
   wand._handleClientResponse = _handleClientResponse
   wand.getUser = getUser
   wand.httpRequest = httpRequest
+  wand.handleTypedData = handleTypedData
 })(window, document, wand);
