@@ -66,6 +66,10 @@
     _execute("httpRequest", request, callback)
   }
 
+  function handleTypedData(data, callback) {
+    _execute("handleTypedData". data, callback)
+  }
+
   wand._handleClientResponse = _handleClientResponse
   wand.getUser = getUser
   wand.httpRequest = httpRequest

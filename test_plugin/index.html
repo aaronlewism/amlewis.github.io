@@ -22,10 +22,40 @@ wand.httpRequest(
   }
 )
 
-
 var t = document.createTextNode("YELLOW\nRUM");
 var h = document.createElement("H2");
 h.appendChild(t);
 document.body.appendChild(h);
+
+wand.handleTypedData(
+  {
+    "@": "restaurant",
+    "addresses": [{
+      "@": "location",
+      "country_code": "US",
+      "latitude": 39.9928283691406,
+      "longitude": -83.0070114135742,
+      "locality": Columbus,
+      "postal_code": 43201,
+      "state_code": "OH",
+      "street_address": "1493 N High St"
+    }],
+    "categories": ["Chinese", "Bubble Tea"],
+    "meta": {
+      "@": "meta",
+      "default_action_url": "wand:/handler/yelp.com",
+      "icon": "http://s3-media1.fl.yelpcdn.com/bphoto/r6LnCJYkP8C6kxw1ptdu-g/ms.jpg",
+      "ids": {"yelp.com": "yaus-chinese-bistro-columbus"},
+      "url": "http://m.yelp.com/biz/yaus-chinese-bistro-columbus"
+    },
+    "name": "Yau's Chinese Bistro",
+    "phone_numbers": [{
+      "@": "phone_number", 
+      "number": "+1-614-299-1272"
+    }],
+    "rating": 0.8,
+    "review_count": 88
+  }
+)
 //--> 
 </script> 
