@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <title>Fandango</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="https://code.jquery.com/jquery-1.8.3.min.js"></script>
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script src="http://dev.wand.to/api/0.1.0/wand.js"></script>
+    <script src="fandango.js"></script>
+</head>
+<body>
+    <div data-role="header" data-theme="a" data-position="fixed">
+        <div id="navbar" data-role="navbar">
+            <ul>
+                <li>
+                    <a href="#inTheaters" id="navBarInTheaters" class="ui-state-persist">In Theaters</a>
+                </li>
+                <li>
+                    <a href="#comingSoon" id="navBarComingSoon">Coming Soon</a>
+                </li>
+                <li>
+                    <a href="#search" id="navBarSearch">Search</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div data-role="page" id="inTheaters" data-title="In Theaters">
+        <div role="main" class="ui-content">
+            <div id="content">
+            </div><!-- /content -->
+        </div>
+    </div><!-- /page -->
+    <div data-role="page" id="comingSoon" data-title="Coming Soon">
+        <div role="main" class="ui-content">
+            <div id="content">
+            </div><!-- /content -->
+        </div>
+    </div><!-- /page -->
+    <div data-role="page" id="search" data-title="Search">
+        <div role="main" class="ui-content">
+            <div id="content">
+            </div><!-- /content -->
+        </div>
+    </div><!-- /page -->
+</body>
+</html>
