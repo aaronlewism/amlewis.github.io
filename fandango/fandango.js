@@ -55,13 +55,15 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
     },
     function (status, result) {
       if (status === 200 && result.status === 200) {
-        var body = $( '<div></div>' );
-        body.html(result.body)
+        var body = $.parseHtml(result.body)
+
+        alert("AAAA")
 
         var movies = $("#items-container", body).children()
         var openingMovies = []
         var playingMovies = []
 
+        alert("BBBB")
         for (movie in movies) {
           var movieData = {}
           var movieTitle = movie.find(".content-title")
@@ -80,7 +82,8 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
             playingMovies.push(movieData)
           }
         }
-
+        alert("CCCC")
+        
         var content = $("#inTheaters").find("#content")
         content.empty()
 
@@ -88,7 +91,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
         p.textContent = JSON.stringify(openingMovies)
         content.append(p)
 
-        var p = document.createElement("p")
+        p = document.createElement("p")
         p.textContent = JSON.stringify(playingMovies)
         content.append(p)
 
