@@ -61,7 +61,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
 
         var p = document.createElement("p")
         content.append(p)
-        content.enhanceWithin()
+        $("#inTheaters").enhanceWithin()
       } else {
         var content = $("#inTheaters").find("#content")
         content.empty()
@@ -80,7 +80,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
           ""))
 
         content.append(list)
-        content.enhanceWithin()
+        $("#inTheaters").enhanceWithin()
       }
     }
   )
