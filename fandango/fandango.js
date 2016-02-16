@@ -50,7 +50,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
   list.appendChild(_createDivider("Opening This Week"))
   list.appendChild(_createRow(
     "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
-    "Acura",
+    "Acura Acura",
     "Luxury Car Company",
     ""))
 
