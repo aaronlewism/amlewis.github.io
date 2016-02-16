@@ -56,9 +56,9 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
     function (status, result) {
       if (status === 200 && result.status === 200) {
         alert("0000")
-        
-        var body =  $( '<div></div>' )
-        body.html(result.body)
+
+        var body = document.createElement( 'html' );
+        body.innerHTML = result.body
 
         alert("AAAA")
 
