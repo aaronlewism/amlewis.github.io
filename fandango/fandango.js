@@ -70,15 +70,18 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
         movies.each(function (index, movie) {
           alert("Heyo")
           var movieData = {}
+          
           var movieTitle = movie.find(".content-title").first()
           movieData.title = movieTitle.text()
+          alert(JSON.stringify(movieData))
 
           var movieDescription = movieTitle.next()
           movieData.description = movieDescription.html()
+          alert(JSON.stringify(movieData))
 
           movieData.image = movie.find("img").first().attr("src")
-
           alert(JSON.stringify(movieData))
+
           var upcoming = movie.find(".upcoming-opening").first()
           if (upcoming.length != 0) {
             movieData.description += "<br> " + upcoming.text()
