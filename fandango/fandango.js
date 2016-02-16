@@ -60,11 +60,11 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
 
         alert("AAAA")
 
-        var movies = $("#items-container", body).children()
+        var movies = $("#items-container", body).children("li")
         var openingMovies = []
         var playingMovies = []
 
-        alert("BBBB")
+        alert("BBBB + " + movies.length)
         for (movie in movies) {
           var movieData = {}
           var movieTitle = movie.find(".content-title")
