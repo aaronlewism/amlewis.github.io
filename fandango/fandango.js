@@ -70,16 +70,16 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
         movies.each(function (index, movie) {
           var movieData = {}
           var movieTitle = movie.find(".content-title")
-          movieData.title = movieTitle.textContent
+          movieData.title = movieTitle.text()
 
           var movieDescription = movieTitle.next()
-          movieData.description = movieDescription.description
+          movieData.description = movieDescription.html()
 
           movieData.image = movie.find("img").attr("src")
 
           var upcoming = movie.find(".upcoming-opening")
           if (upcoming != null) {
-            movieData.description += "<br> " + upcoming.textContent
+            movieData.description += "<br> " + upcoming.text()
             openingMovies.push(movieData)
           } else {
             playingMovies.push(movieData)
