@@ -67,7 +67,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
         var playingMovies = []
 
         alert("BBBB + " + movies.length)
-        for (movie in movies) {
+        movies.each(function (index, movie) {
           var movieData = {}
           var movieTitle = movie.find(".content-title")
           movieData.title = movieTitle.textContent
@@ -84,7 +84,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
           } else {
             playingMovies.push(movieData)
           }
-        }
+        })
         alert("CCCC")
         
         var content = $("#inTheaters").find("#content")
