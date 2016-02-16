@@ -1,11 +1,7 @@
-$(document).on("pageinit", function () {
-    $("[data-role='navbar']").navbar();
-    $("[data-role='header']").toolbar();
-});
+(function(obj) {
+  var _fandango_utils = {};
 
-// In Theaters
-$(document).on('pagebeforecreate', '#inTheaters', function() {
-   function _createDivider(title) {
+  function createDivider(title) {
     var divider = document.createElement("li")
     divider.setAttribute("data-role", "list-divider")
     divider.setAttribute("role", "heading")
@@ -14,7 +10,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
     return divider
   }
 
-  function _createRow(image, title, description, onClickCallback) {
+  function createRow(image, title, description, onClickCallback) {
     var row = document.createElement("li")
     row.setAttribute("data-icon", "false")
 
@@ -38,6 +34,20 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
     return row
   }
 
+
+  _fandango_utils.createDivider = createDivider
+  _fandango_utils.createRow = createRow
+
+  obj._fandango_utils = _fandango_utils;
+})(window);
+
+$(document).on("pageinit", function () {
+    $("[data-role='navbar']").navbar();
+    $("[data-role='header']").toolbar();
+});
+
+// In Theaters
+$(document).on('pagebeforecreate', '#inTheaters', function() {
   var content = $("#inTheaters").find("#content")
   content.empty()
 
@@ -47,10 +57,10 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
   list.setAttribute("data-divider-theme", "a")
 
 
-  list.appendChild(_createDivider("Opening This Week"))
-  list.appendChild(_createRow(
+  list.appendChild(_fandango_utils.createDivider("Opening This Week"))
+  list.appendChild(_fandango_utils.createRow(
     "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
-    "Acura Acura",
+    "Acura",
     "Luxury Car Company",
     ""))
 
@@ -59,39 +69,6 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
 
 // Coming Soon
 $(document).on('pagebeforecreate', '#comingSoon', function() {
-   function _createDivider(title) {
-    var divider = document.createElement("li")
-    divider.setAttribute("data-role", "list-divider")
-    divider.setAttribute("role", "heading")
-    divider.textContent = title
-
-    return divider
-  }
-
-  function _createRow(image, title, description, onClickCallback) {
-    var row = document.createElement("li")
-    row.setAttribute("data-icon", "false")
-
-    var a = document.createElement("a")
-    a.setAttribute("onclick", onClickCallback)
-
-    var img = document.createElement("img")
-    img.setAttribute("src", image)
-    a.appendChild(img)
-
-    var h2 = document.createElement("h2")
-    h2.innerHTML = title
-    a.appendChild(h2)
-
-    var p = document.createElement("p")
-    p.innerHTML = description
-    a.appendChild(p)
-
-    row.appendChild(a)
-
-    return row
-  }
-
   var content =  $("#comingSoon").find("#content")
   content.empty()
 
@@ -101,8 +78,8 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
   list.setAttribute("data-divider-theme", "a")
 
 
-  list.appendChild(_createDivider("Opening This Week"))
-  list.appendChild(_createRow(
+  list.appendChild(_fandango_utils.createDivider("Opening This Week"))
+  list.appendChild(_fandango_utils.createRow(
     "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
     "Ford",
     "American Car Company",
@@ -113,39 +90,6 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 
 // Search
 $(document).on('pagebeforecreate', '#search', function() {
-   function _createDivider(title) {
-    var divider = document.createElement("li")
-    divider.setAttribute("data-role", "list-divider")
-    divider.setAttribute("role", "heading")
-    divider.textContent = title
-
-    return divider
-  }
-
-  function _createRow(image, title, description, onClickCallback) {
-    var row = document.createElement("li")
-    row.setAttribute("data-icon", "false")
-
-    var a = document.createElement("a")
-    a.setAttribute("onclick", onClickCallback)
-
-    var img = document.createElement("img")
-    img.setAttribute("src", image)
-    a.appendChild(img)
-
-    var h2 = document.createElement("h2")
-    h2.innerHTML = title
-    a.appendChild(h2)
-
-    var p = document.createElement("p")
-    p.innerHTML = description
-    a.appendChild(p)
-
-    row.appendChild(a)
-
-    return row
-  }
-
   var content =  $("#search").find("#content")
   content.empty()
 
@@ -155,8 +99,8 @@ $(document).on('pagebeforecreate', '#search', function() {
   list.setAttribute("data-divider-theme", "a")
 
 
-  list.appendChild(_createDivider("Opening This Week"))
-  list.appendChild(_createRow(
+  list.appendChild(_fandango_utils.createDivider("Opening This Week"))
+  list.appendChild(_fandango_utils.createRow(
     "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
     "Toyota",
     "Car Company",
