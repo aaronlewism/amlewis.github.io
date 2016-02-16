@@ -54,14 +54,42 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
       "url": "http://mobile.fandango.com/movies-in-theaters"
     },
     function (status, result) {
-      alert("Here")
-      alert(status + " " + result.status)
-      if (status === 200 && result['status'] === 200) {
+      if (status === 200 && result.status === 200) {
+        var body = $( '<div></div>' );
+        body.html(result.body)
+
+        var movies = $("#items-container", body).children()
+        var openingMovies = []
+        var playingMovies = []
+
+        for (movie in movies) {
+          var movieData = {}
+          var movieTitle = movie.find(".content-title")
+          movieData.title = movieTitle.textContent
+
+          var movieDescription = movieTitle.next()
+          movieData.description = movieDescription.description
+
+          movieData.image = movie.find("img").attr("src")
+
+          var upcoming = movie.find(".upcoming-opening")
+          if (upcoming != null) {
+            movieData.description += "<br> " + upcoming.textContent
+            openingMovies.push(movieData)
+          } else {
+            playingMovies.push(movieData)
+          }
+        }
+
         var content = $("#inTheaters").find("#content")
         content.empty()
 
         var p = document.createElement("p")
-        p.textContent = result['body']
+        p.textContent = JSON.stringify(openingMovies)
+        content.append(p)
+
+        var p = document.createElement("p")
+        p.textContent = JSON.stringify(playingMovies)
         content.append(p)
 
         $("#inTheaters").enhanceWithin()
