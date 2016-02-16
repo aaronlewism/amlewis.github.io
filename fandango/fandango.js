@@ -56,7 +56,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
     function (status, result) {
       if (status === 200 && result.status === 200) {
         alert("0000")
-        var body = $.parseHTML(result.body)
+        var body = $.parseHTML(result.body, document, false)
 
         alert("AAAA")
 
@@ -64,7 +64,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
         var openingMovies = []
         var playingMovies = []
 
-        alert("BBBB + " + JSON.stringify(movies))
+        alert("BBBB + " + movies.length)
         for (movie in movies) {
           var movieData = {}
           var movieTitle = movie.find(".content-title")
