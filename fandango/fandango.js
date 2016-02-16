@@ -54,7 +54,8 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
       "url": "http://mobile.fandango.com/mov_intheaters/_sptab?&from=movies"
     },
     function (status, result) {
-      if (status == 200 && result.status == 200) {
+      alert(status + " " + result.status)
+      if (status === 200 && result.status === 200) {
         var content = $("#inTheaters").find("#content")
         content.empty()
 
