@@ -48,6 +48,42 @@ $(document).on("pageinit", function () {
 
 // In Theaters
 $(document).on('pagebeforecreate', '#inTheaters', function() {
+
+  wand.httpRequest(
+    {
+      "url": "http://mobile.fandango.com/mov_intheaters/_sptab?&from=movies"
+    },
+    function (status, result) {
+      if (status == 200 && result.status == 200) {
+        var content = $("#inTheaters").find("#content")
+        content.empty()
+
+        var p = document.createElement("p")
+        content.append(p)
+        content.enhanceWithin()
+      } else {
+        var content = $("#inTheaters").find("#content")
+        content.empty()
+
+        var list = document.createElement("ul")
+        list.setAttribute("data-role", "listview")
+        list.setAttribute("data-inset", "true")
+        list.setAttribute("data-divider-theme", "a")
+
+
+        list.appendChild(_fandango_utils.createDivider("Opening This Week"))
+        list.appendChild(_fandango_utils.createRow(
+          "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
+          "ERROR LOADING",
+          "Errors happened",
+          ""))
+
+        content.append(list)
+        content.enhanceWithin()
+      }
+    }
+  )
+
   var content = $("#inTheaters").find("#content")
   content.empty()
 
@@ -60,8 +96,8 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
   list.appendChild(_fandango_utils.createDivider("Opening This Week"))
   list.appendChild(_fandango_utils.createRow(
     "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
-    "Acura",
-    "Luxury Car Company",
+    "LOADING",
+    "Loading some shit",
     ""))
 
   content.append(list)
