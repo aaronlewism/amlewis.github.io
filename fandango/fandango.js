@@ -54,6 +54,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
       "url": "http://mobile.fandango.com/movies-in-theaters"
     },
     function (status, result) {
+      alert("Here!")
       alert(status + " " + result['status'])
       if (status === 200 && result['status'] === 200) {
         var content = $("#inTheaters").find("#content")
