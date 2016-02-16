@@ -77,6 +77,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
 
           movieData.image = movie.find("img").first().attr("src")
 
+          alert(JSON.stringify(movieData))
           var upcoming = movie.find(".upcoming-opening").first()
           if (upcoming.length != 0) {
             movieData.description += "<br> " + upcoming.text()
