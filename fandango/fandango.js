@@ -51,16 +51,18 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
 
   wand.httpRequest(
     {
-      "url": "http://mobile.fandango.com/mov_intheaters/_sptab?&from=movies"
+      "url": "http://mobile.fandango.com/movies-in-theaters"
     },
     function (status, result) {
-      alert(status + " " + result.status)
-      if (status === 200 && result.status === 200) {
+      alert(status + " " + result['status'])
+      if (status === 200 && result['status'] === 200) {
         var content = $("#inTheaters").find("#content")
         content.empty()
 
         var p = document.createElement("p")
+        p.textContent = result['body']
         content.append(p)
+
         $("#inTheaters").enhanceWithin()
       } else {
         var content = $("#inTheaters").find("#content")
