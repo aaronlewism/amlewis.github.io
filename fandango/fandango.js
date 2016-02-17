@@ -198,8 +198,9 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 
           function getWeekStart(dateUTC) {
             var date = new Date(dateUTC)
-            var start = date - date.getDay() * 24 * 60 * 60 * 1000
-            return start % (24 * 60 * 60 * 1000) 
+            var msInDay = (24 * 60 * 60 * 1000)
+            var start = date - date.getDay() * msInDay
+            return Math.floor(start / (msInDay)) * msInDay
           }
 
           var weekday = new Array(7);
@@ -215,7 +216,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
           if (movieDescriptions.length > 0) {
             for (var i=0; i<movieDescriptions.length; i++) {
               var movie = movieDescriptions[i]
-              var start = getWeekStart(movieData.time)
+              var start = getWeekStart(movie.time)
               if (start != curWeekStart) {
                 curWeekStart = start
                 var curWeekEnd = curWeekStart + 6 * 24 * 60 * 60 * 1000
