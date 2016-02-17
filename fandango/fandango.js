@@ -269,7 +269,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 })
 
 // Search
-$('#search-query').change(function() {
+$('#search-query').on("change", function() {
     alert($('#search-query').val());
 });
 
