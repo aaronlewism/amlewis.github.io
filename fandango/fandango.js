@@ -270,7 +270,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 
 // Search
 $(document).on('pagebeforecreate', '#search', function() {
-  var content =  $("#search").find("#content")
+  var content =  $("#search").find("#results")
   content.empty()
 
   var list = document.createElement("ul")
