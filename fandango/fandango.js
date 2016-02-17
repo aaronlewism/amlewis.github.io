@@ -94,7 +94,8 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
 
           if (openingMovies.length > 0) {
             list.appendChild(_fandango_utils.createDivider("Opening This Week"))
-            for (movie in openingMovies) {
+            for (var i=0; i<openingMovies.length; i++) {
+              var movie = openingMovies[i]
               alert(JSON.stringify(movie))
               list.appendChild(_fandango_utils.createRow(
                 movie.image,
@@ -106,7 +107,8 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
           
           if (playingMovies.length > 0) {
             list.appendChild(_fandango_utils.createDivider("Now Playing"))
-            for (movie in playingMovies) {
+            for (var i=0; i<playingMovies.length; i++) {
+              var movie = playingMovies[i]
               list.appendChild(_fandango_utils.createRow(
                 movie.image,
                 movie.title,
