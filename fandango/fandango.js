@@ -52,7 +52,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
       $.mobile.loading('show');
       clearInterval(interval);
   },1); 
-  
+
   setTimeout(function() {
     wand.httpRequest(
       {
@@ -185,6 +185,8 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 
             var upcoming = movie.find(".upcoming-opening").first()
             movieData.description += "<br> " + upcoming.text()
+            movieData.time = Date.parse(upcoming.substring(6))
+            alert(JSON.stringify(movieData.time))
             movieDescriptions.push(movieData)
           })
           
