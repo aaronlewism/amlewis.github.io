@@ -48,7 +48,13 @@ $(document).on("pageinit", function () {
 
 // In Theaters
 $(document).on('pagebeforecreate', '#inTheaters', function() {
-  $.mobile.loading( "show" )
+  $.mobile.loading( "show", {
+    theme: $.mobile.loader.prototype.options.theme,
+    msgText: $.mobile.loader.prototype.options.text,
+    textVisible: false,
+    textOnly: false,
+    html: "",
+  })
 
   setTimeout(function() {
     wand.httpRequest(
@@ -150,7 +156,13 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
 
 // Coming Soon
 $(document).on('pagebeforecreate', '#comingSoon', function() {
-  $.mobile.loading( "show" )
+  $.mobile.loading( "show", {
+    theme: $.mobile.loader.prototype.options.theme,
+    msgText: $.mobile.loader.prototype.options.text,
+    textVisible: false,
+    textOnly: false,
+    html: "",
+  })
 
   setTimeout(function() {
     wand.httpRequest(
