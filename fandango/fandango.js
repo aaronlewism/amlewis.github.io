@@ -184,8 +184,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
             movieData.image = movie.find("img").first().attr("src")
 
             var upcoming = movie.find(".upcoming-opening").first()
-            movieData.time = Date.parse(upcoming.text().substring(6))
-            alert(JSON.stringify(movieData.time))
+            movieData.time = new Date(Date.parse(upcoming.text().substring(6)))
             movieDescriptions.push(movieData)
           })
           
@@ -197,7 +196,8 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
           list.setAttribute("data-inset", "true")
           list.setAttribute("data-divider-theme", "a")
 
-          function getWeekStart(date) {
+          function getWeekStart(dateUTC) {
+            var date = new Date(dateUTC)
             var start = date - date.getDay() * 24 * 60 * 60 * 1000
             return start % (24 * 60 * 60 * 1000) 
           }
@@ -219,8 +219,8 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
               if (start != curWeekStart) {
                 curWeekStart = start
                 var curWeekEnd = curWeekStart + 6 * 24 * 60 * 60 * 1000
-                var curWeekStartStr = curWeekStart.toDateString().split(' ').slice(1,3).join(' ')
-                var curWeekEndStr = curWeekEnd.toDateString().split(' ').slice(1,3).join(' ')
+                var curWeekStartStr = new Date(curWeekStart).toDateString().split(' ').slice(1,3).join(' ')
+                var curWeekEndStr = new Date(curWeekEnd).toDateString().split(' ').slice(1,3).join(' ')
                 var title = "Week of " + curWeekStartStr + ' - ' + curWeekEndStr
                 list.appendChild(_fandango_utils.createDivider(title))
               }
