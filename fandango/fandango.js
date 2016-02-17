@@ -197,10 +197,37 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
           list.setAttribute("data-inset", "true")
           list.setAttribute("data-divider-theme", "a")
 
+          function getWeekStart(date) {
+            var start = date - date.getDay() * 24 * 60 * 60 * 1000
+            return start % (24 * 60 * 60 * 1000) 
+          }
+
+          var weekday = new Array(7);
+          weekday[0]=  "Sunday";
+          weekday[1] = "Monday";
+          weekday[2] = "Tuesday";
+          weekday[3] = "Wednesday";
+          weekday[4] = "Thursday";
+          weekday[5] = "Friday";
+          weekday[6] = "Saturday";
+
+          var curWeekStart = 0;
           if (movieDescriptions.length > 0) {
-            list.appendChild(_fandango_utils.createDivider("Coming Soon"))
             for (var i=0; i<movieDescriptions.length; i++) {
               var movie = movieDescriptions[i]
+              var start = getWeekStart(movieData.time)
+              if (start != curWeekStart) {
+                curWeekStart = start
+                var curWeekEnd = curWeekStart + 6 * 24 * 60 * 60 * 1000
+                var curWeekStartStr = curWeekStart.toDateString().split(' ').slice(1,3).join(' ')
+                var curWeekEndStr = curWeekEnd.toDateString().split(' ').slice(1,3).join(' ')
+                var title = "Week of " + curWeekStartStr + ' - ' + curWeekEndStr
+                list.appendChild(_fandango_utils.createDivider(title))
+              }
+              var description = movie.description
+              if (curWeekStart < Date.now()) {
+                description += "<br> Opens " + weekday[movie.time.getDay()] 
+              }
               list.appendChild(_fandango_utils.createRow(
                 movie.image,
                 movie.title,
