@@ -48,23 +48,7 @@ $(document).on("pageinit", function () {
 
 // In Theaters
 $(document).on('pagebeforecreate', '#inTheaters', function() {
-  var content = $("#inTheaters").find("#content")
-  content.empty()
-
-  var list = document.createElement("ul")
-  list.setAttribute("data-role", "listview")
-  list.setAttribute("data-inset", "true")
-  list.setAttribute("data-divider-theme", "a")
-
-
-  list.appendChild(_fandango_utils.createDivider("Opening This Week"))
-  list.appendChild(_fandango_utils.createRow(
-    "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
-    "LOADING",
-    "Loading some shit",
-    ""))
-
-  content.append(list)
+  $.mobile.loading( "show" )
 
   setTimeout(function() {
     wand.httpRequest(
@@ -134,6 +118,8 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
           }
 
           content.append(list)
+
+          $.mobile.loading( "hide" )
           content.enhanceWithin()
         } else {
           var content = $("#inTheaters").find("#content")
@@ -153,32 +139,18 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
             ""))
 
           content.append(list)
+
+          $.mobile.loading( "hide" )
           content.enhanceWithin()
         }
       }
     )
-  }, 1)
+  }, 0)
 })
 
 // Coming Soon
 $(document).on('pagebeforecreate', '#comingSoon', function() {
-  var content =  $("#comingSoon").find("#content")
-  content.empty()
-
-  var list = document.createElement("ul")
-  list.setAttribute("data-role", "listview")
-  list.setAttribute("data-inset", "true")
-  list.setAttribute("data-divider-theme", "a")
-
-
-  list.appendChild(_fandango_utils.createDivider("Opening This Week"))
-  list.appendChild(_fandango_utils.createRow(
-    "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
-    "Ford",
-    "American Car Company",
-    ""))
-
-  content.append(list)
+  $.mobile.loading( "show" )
 
   setTimeout(function() {
     wand.httpRequest(
@@ -231,6 +203,8 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
           }
           
           content.append(list)
+
+          $.mobile.loading( "hide" )
           content.enhanceWithin()
         } else {
           var content = $("#comingSoon").find("#content")
@@ -250,11 +224,13 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
             ""))
 
           content.append(list)
+
+          $.mobile.loading( "hide" )
           content.enhanceWithin()
         }
       }
     )
-  }, 1)
+  }, 0)
 })
 
 // Search
