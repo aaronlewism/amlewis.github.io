@@ -59,7 +59,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
           var body = document.createElement( 'html' );
           body.innerHTML = result.body
 
-          var movies = $("#items-container", body).children("li")
+          var movies = $("#items-container", body).children("li").filter(".content-item")
           var openingMovies = []
           var playingMovies = []
 
@@ -96,7 +96,6 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
             list.appendChild(_fandango_utils.createDivider("Opening This Week"))
             for (var i=0; i<openingMovies.length; i++) {
               var movie = openingMovies[i]
-              alert(JSON.stringify(movie))
               list.appendChild(_fandango_utils.createRow(
                 movie.image,
                 movie.title,
