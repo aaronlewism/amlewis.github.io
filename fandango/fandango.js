@@ -49,94 +49,98 @@ $(document).on("pageinit", function () {
 // In Theaters
 $(document).on('pagebeforecreate', '#inTheaters', function() {
 
-  wand.httpRequest(
-    {
-      "url": "http://mobile.fandango.com/movies-in-theaters"
-    },
-    function (status, result) {
-      if (status === 200 && result.status === 200) {
-        var body = document.createElement( 'html' );
-        body.innerHTML = result.body
+  setTimeout(function() {
+    wand.httpRequest(
+      {
+        "url": "http://mobile.fandango.com/movies-in-theaters"
+      },
+      function (status, result) {
+        if (status === 200 && result.status === 200) {
+          var body = document.createElement( 'html' );
+          body.innerHTML = result.body
 
-        var movies = $("#items-container", body).children("li")
-        var openingMovies = []
-        var playingMovies = []
+          var movies = $("#items-container", body).children("li")
+          var openingMovies = []
+          var playingMovies = []
 
-        movies.each(function (index, element) {
-          var movie = $(element)
-          var movieData = {}
+          movies.each(function (index, element) {
+            var movie = $(element)
+            var movieData = {}
+            
+            var movieTitle = movie.find(".content-title")
+            movieData.title = movieTitle.text()
+
+            var movieDescription = movieTitle.next()
+            movieData.description = movieDescription.html()
+
+            movieData.image = movie.find("img").first().attr("src")
+
+            var upcoming = movie.find(".upcoming-opening").first()
+            if (upcoming.length != 0) {
+              movieData.description += "<br> " + upcoming.text()
+              openingMovies.push(movieData)
+            } else {
+              playingMovies.push(movieData)
+            }
+          })
           
-          var movieTitle = movie.find(".content-title")
-          movieData.title = movieTitle.text()
+          var content = $("#inTheaters").find("#content")
+          content.empty()
 
-          var movieDescription = movieTitle.next()
-          movieData.description = movieDescription.html()
+          var list = document.createElement("ul")
+          list.setAttribute("data-role", "listview")
+          list.setAttribute("data-inset", "true")
+          list.setAttribute("data-divider-theme", "a")
+          
+          alert(JSON.stringify(openingMovies[0]))
 
-          movieData.image = movie.find("img").first().attr("src")
-
-          var upcoming = movie.find(".upcoming-opening").first()
-          if (upcoming.length != 0) {
-            movieData.description += "<br> " + upcoming.text()
-            openingMovies.push(movieData)
-          } else {
-            playingMovies.push(movieData)
+          if (openingMovies.length > 0) {
+            list.appendChild(_fandango_utils.createDivider("Opening This Week"))
+            for (movie in openingMovies) {
+              list.appendChild(_fandango_utils.createRow(
+                movie.image,
+                movie.title,
+                movie.description,
+                ""))
+            }
           }
-        })
-        
-        var content = $("#inTheaters").find("#content")
-        content.empty()
+          
+          if (playingMovies.length > 0) {
+            list.appendChild(_fandango_utils.createDivider("Now Playing"))
+            for (movie in playingMovies) {
+              list.appendChild(_fandango_utils.createRow(
+                movie.image,
+                movie.title,
+                movie.description,
+                ""))
+            }
+          }
 
-        var list = document.createElement("ul")
-        list.setAttribute("data-role", "listview")
-        list.setAttribute("data-inset", "true")
-        list.setAttribute("data-divider-theme", "a")
-        
-        if (openingMovies.length > 0) {
+          content.append(list)
+          content.enhanceWithin()
+        } else {
+          var content = $("#inTheaters").find("#content")
+          content.empty()
+
+          var list = document.createElement("ul")
+          list.setAttribute("data-role", "listview")
+          list.setAttribute("data-inset", "true")
+          list.setAttribute("data-divider-theme", "a")
+
+
           list.appendChild(_fandango_utils.createDivider("Opening This Week"))
-          for (movie in openingMovies) {
-            list.appendChild(_fandango_utils.createRow(
-              movie.image,
-              movie.title,
-              movie.description,
-              ""))
-          }
+          list.appendChild(_fandango_utils.createRow(
+            "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
+            "ERROR LOADING",
+            "Errors happened",
+            ""))
+
+          content.append(list)
+          content.enhanceWithin()
         }
-        
-        if (playingMovies.length > 0) {
-          list.appendChild(_fandango_utils.createDivider("Now Playing"))
-          for (movie in playingMovies) {
-            list.appendChild(_fandango_utils.createRow(
-              movie.image,
-              movie.title,
-              movie.description,
-              ""))
-          }
-        }
-
-        content.append(list)
-        content.enhanceWithin()
-      } else {
-        var content = $("#inTheaters").find("#content")
-        content.empty()
-
-        var list = document.createElement("ul")
-        list.setAttribute("data-role", "listview")
-        list.setAttribute("data-inset", "true")
-        list.setAttribute("data-divider-theme", "a")
-
-
-        list.appendChild(_fandango_utils.createDivider("Opening This Week"))
-        list.appendChild(_fandango_utils.createRow(
-          "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
-          "ERROR LOADING",
-          "Errors happened",
-          ""))
-
-        content.append(list)
-        content.enhanceWithin()
       }
-    }
-  )
+    )
+  }, 0)
 
   var content = $("#inTheaters").find("#content")
   content.empty()
