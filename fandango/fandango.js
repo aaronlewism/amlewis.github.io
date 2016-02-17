@@ -184,8 +184,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
             movieData.image = movie.find("img").first().attr("src")
 
             var upcoming = movie.find(".upcoming-opening").first()
-            movieData.description += "<br> " + upcoming.text()
-            movieData.time = Date.parse(upcoming.substring(6))
+            movieData.time = Date.parse(upcoming.text().substring(6))
             alert(JSON.stringify(movieData.time))
             movieDescriptions.push(movieData)
           })
