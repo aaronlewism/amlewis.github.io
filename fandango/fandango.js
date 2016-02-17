@@ -48,6 +48,23 @@ $(document).on("pageinit", function () {
 
 // In Theaters
 $(document).on('pagebeforecreate', '#inTheaters', function() {
+  var content = $("#inTheaters").find("#content")
+  content.empty()
+
+  var list = document.createElement("ul")
+  list.setAttribute("data-role", "listview")
+  list.setAttribute("data-inset", "true")
+  list.setAttribute("data-divider-theme", "a")
+
+
+  list.appendChild(_fandango_utils.createDivider("Opening This Week"))
+  list.appendChild(_fandango_utils.createRow(
+    "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
+    "LOADING",
+    "Loading some shit",
+    ""))
+
+  content.append(list)
 
   setTimeout(function() {
     wand.httpRequest(
@@ -141,24 +158,6 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
       }
     )
   }, 0)
-
-  var content = $("#inTheaters").find("#content")
-  content.empty()
-
-  var list = document.createElement("ul")
-  list.setAttribute("data-role", "listview")
-  list.setAttribute("data-inset", "true")
-  list.setAttribute("data-divider-theme", "a")
-
-
-  list.appendChild(_fandango_utils.createDivider("Opening This Week"))
-  list.appendChild(_fandango_utils.createRow(
-    "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
-    "LOADING",
-    "Loading some shit",
-    ""))
-
-  content.append(list)
 })
 
 // Coming Soon
@@ -180,6 +179,82 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
     ""))
 
   content.append(list)
+
+  setTimeout(function() {
+    wand.httpRequest(
+      {
+        "url": "http://mobile.fandango.com/movies-coming-soon"
+      },
+      function (status, result) {
+        if (status === 200 && result.status === 200) {
+          var body = document.createElement( 'html' );
+          body.innerHTML = result.body
+
+          var movies = $("#items-container", body).children("li").filter(".content-item")
+          var movieDescriptions = []
+
+          movies.each(function (index, element) {
+            var movie = $(element)
+            var movieData = {}
+            
+            var movieTitle = movie.find(".content-title")
+            movieData.title = movieTitle.text()
+
+            var movieDescription = movieTitle.next()
+            movieData.description = movieDescription.html()
+
+            movieData.image = movie.find("img").first().attr("src")
+
+            var upcoming = movie.find(".upcoming-opening").first()
+            movieData.description += "<br> " + upcoming.text()
+            movieDescriptions.push(movieData)
+          })
+          
+          var content = $("#inTheaters").find("#content")
+          content.empty()
+
+          var list = document.createElement("ul")
+          list.setAttribute("data-role", "listview")
+          list.setAttribute("data-inset", "true")
+          list.setAttribute("data-divider-theme", "a")
+
+          if (movieDescriptions.length > 0) {
+            list.appendChild(_fandango_utils.createDivider("Coming Soon"))
+            for (var i=0; i<movieDescriptions.length; i++) {
+              var movie = movieDescriptions[i]
+              list.appendChild(_fandango_utils.createRow(
+                movie.image,
+                movie.title,
+                movie.description,
+                ""))
+            }
+          }
+          
+          content.append(list)
+          content.enhanceWithin()
+        } else {
+          var content = $("#inTheaters").find("#content")
+          content.empty()
+
+          var list = document.createElement("ul")
+          list.setAttribute("data-role", "listview")
+          list.setAttribute("data-inset", "true")
+          list.setAttribute("data-divider-theme", "a")
+
+
+          list.appendChild(_fandango_utils.createDivider("Opening This Week"))
+          list.appendChild(_fandango_utils.createRow(
+            "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
+            "ERROR LOADING",
+            "Errors happened",
+            ""))
+
+          content.append(list)
+          content.enhanceWithin()
+        }
+      }
+    )
+  }, 0)
 })
 
 // Search
