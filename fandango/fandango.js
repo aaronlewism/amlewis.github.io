@@ -275,57 +275,74 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 $(document).on("keyup", "#search-query", function() {
   var query = $('#search-query').val()
   var searchId = _fandango_utils._search_counter++
-  setTimeout(function() {
-    wand.httpRequest(
-      {
-        "url": "http://mobile.fandango.com/search?query=" + encodeURIComponent(query)
-      },
-      function (status, result) {
-        if (status === 200 && result.status === 200 && searchId > _fandango_utils._cur_displayed_search) {
-          _fandango_utils._cur_displayed_search = searchId
 
-          var content = $("#search").find("#results")
-          content.empty()
+  if (query === "") {
+     _fandango_utils._cur_displayed_search = searchId
+     var content = $("#search").find("#results")
 
-          var list = document.createElement("ul")
-          list.setAttribute("data-role", "listview")
-          list.setAttribute("data-inset", "true")
-          list.setAttribute("data-divider-theme", "a")
+     content.empty()
 
-          list.appendChild(_fandango_utils.createRow(
-            "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
-            query,
-            "Successful search",
-            ""))
+     content.enhanceWithin()
+  } else {
+    var content = $("#search").find("#results")
+    if (content.length === 0) {
+      var interval = setInterval(function(){
+        $.mobile.loading('show');
+        clearInterval(interval);
+      },1); 
+    }
+    setTimeout(function() {
+      wand.httpRequest(
+        {
+          "url": "http://mobile.fandango.com/search?query=" + encodeURIComponent(query)
+        },
+        function (status, result) {
+          if (status === 200 && result.status === 200 && searchId > _fandango_utils._cur_displayed_search) {
+            _fandango_utils._cur_displayed_search = searchId
 
-          content.append(list)
+            var content = $("#search").find("#results")
+            content.empty()
 
-          $.mobile.loading( "hide" )
-          content.enhanceWithin()
-        } else if (searchId > _fandango_utils._cur_displayed_search) {
-          _fandango_utils._cur_displayed_search = searchId
-          var content = $("#search").find("#results")
-          content.empty()
+            var list = document.createElement("ul")
+            list.setAttribute("data-role", "listview")
+            list.setAttribute("data-inset", "true")
+            list.setAttribute("data-divider-theme", "a")
 
-          var list = document.createElement("ul")
-          list.setAttribute("data-role", "listview")
-          list.setAttribute("data-inset", "true")
-          list.setAttribute("data-divider-theme", "a")
+            list.appendChild(_fandango_utils.createRow(
+              "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
+              query,
+              "Successful search",
+              ""))
 
-          list.appendChild(_fandango_utils.createRow(
-            "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
-            "ERROR LOADING",
-            "Errors happened",
-            ""))
+            content.append(list)
 
-          content.append(list)
+            $.mobile.loading( "hide" )
+            content.enhanceWithin()
+          } else if (searchId > _fandango_utils._cur_displayed_search) {
+            _fandango_utils._cur_displayed_search = searchId
+            var content = $("#search").find("#results")
+            content.empty()
 
-          $.mobile.loading( "hide" )
-          content.enhanceWithin()
+            var list = document.createElement("ul")
+            list.setAttribute("data-role", "listview")
+            list.setAttribute("data-inset", "true")
+            list.setAttribute("data-divider-theme", "a")
+
+            list.appendChild(_fandango_utils.createRow(
+              "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
+              "ERROR LOADING",
+              "Errors happened",
+              ""))
+
+            content.append(list)
+
+            $.mobile.loading( "hide" )
+            content.enhanceWithin()
+          }
         }
-      }
-    )
-  }, 0)
+      )
+    }, 0)
+  }
 });
 
 // Keep proper tab selected
