@@ -52,7 +52,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
     theme: $.mobile.loader.prototype.options.theme,
     msgText: $.mobile.loader.prototype.options.text,
     textVisible: false,
-    textOnly: false,
+    textonly: false,
     html: "",
   })
 
@@ -160,7 +160,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
     theme: $.mobile.loader.prototype.options.theme,
     msgText: $.mobile.loader.prototype.options.text,
     textVisible: false,
-    textOnly: false,
+    textonly: false,
     html: "",
   })
 
