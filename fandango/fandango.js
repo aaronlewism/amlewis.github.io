@@ -210,7 +210,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
             movieDescriptions.push(movieData)
           })
           
-          var content = $("#inTheaters").find("#content")
+          var content = $("#comingSoon").find("#content")
           content.empty()
 
           var list = document.createElement("ul")
@@ -233,7 +233,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
           content.append(list)
           content.enhanceWithin()
         } else {
-          var content = $("#inTheaters").find("#content")
+          var content = $("#comingSoon").find("#content")
           content.empty()
 
           var list = document.createElement("ul")
