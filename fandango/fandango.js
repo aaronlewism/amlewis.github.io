@@ -157,7 +157,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
         }
       }
     )
-  }, 0)
+  }, 1)
 })
 
 // Coming Soon
@@ -254,15 +254,13 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
         }
       }
     )
-  }, 0)
+  }, 1)
 })
 
 // Search
 $(document).on('pagebeforecreate', '#search', function() {
   var content =  $("#search").find("#content")
   content.empty()
-
-  alert("Hey created me!")
 
   var list = document.createElement("ul")
   list.setAttribute("data-role", "listview")
