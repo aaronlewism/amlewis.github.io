@@ -269,25 +269,9 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 })
 
 // Search
-$(document).on('pagebeforecreate', '#search', function() {
-  var content =  $("#search").find("#results")
-  content.empty()
-
-  var list = document.createElement("ul")
-  list.setAttribute("data-role", "listview")
-  list.setAttribute("data-inset", "true")
-  list.setAttribute("data-divider-theme", "a")
-
-
-  list.appendChild(_fandango_utils.createDivider("Opening This Week"))
-  list.appendChild(_fandango_utils.createRow(
-    "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
-    "Toyota",
-    "Car Company",
-    ""))
-
-  content.append(list)
-})
+$('#search-query').change(function() {
+    alert($('#search-query').val());
+});
 
 // Keep proper tab selected
 $( document ).on( "pagecontainerchange", function() {
