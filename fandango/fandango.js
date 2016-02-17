@@ -91,12 +91,11 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
           list.setAttribute("data-role", "listview")
           list.setAttribute("data-inset", "true")
           list.setAttribute("data-divider-theme", "a")
-          
-          alert(JSON.stringify(openingMovies[0]))
 
           if (openingMovies.length > 0) {
             list.appendChild(_fandango_utils.createDivider("Opening This Week"))
             for (movie in openingMovies) {
+              alert(JSON.stringify(movie))
               list.appendChild(_fandango_utils.createRow(
                 movie.image,
                 movie.title,
