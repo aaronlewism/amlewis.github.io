@@ -67,7 +67,8 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
         var playingMovies = []
 
         alert("BBBB + " + movies.length)
-        movies.each(function (index, movie) {
+        movies.each(function (index, element) {
+          var movie = $(element)
           alert("Heyo " + movie.html())
           var movieData = {}
           
