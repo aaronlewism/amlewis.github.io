@@ -38,6 +38,9 @@
   _fandango_utils.createDivider = createDivider
   _fandango_utils.createRow = createRow
 
+  _fandango_utils._search_counter = 0
+  _fandango_utils._cur_displayed_search = -1
+
   obj._fandango_utils = _fandango_utils;
 })(window);
 
@@ -270,8 +273,59 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 
 // Search
 $(document).on("keyup", "#search-query", function() {
-    alert("Hi")
-    alert($('#search-query').val());
+  var query = $('#search-query').val()
+  var searchId = _fandango_utils._search_counter++
+  setTimeout(function() {
+    wand.httpRequest(
+      {
+        "url": "http://mobile.fandango.com/search?query=" + encodeURIComponent(query)
+      },
+      function (status, result) {
+        if (status === 200 && result.status === 200 && searchId > _fandango_utils._cur_displayed_search) {
+          _fandango_utils._cur_displayed_search = searchId
+
+          var content = $("#search").find("#results")
+          content.empty()
+
+          var list = document.createElement("ul")
+          list.setAttribute("data-role", "listview")
+          list.setAttribute("data-inset", "true")
+          list.setAttribute("data-divider-theme", "a")
+
+          list.appendChild(_fandango_utils.createRow(
+            "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
+            query,
+            "Successful search",
+            ""))
+
+          content.append(list)
+
+          $.mobile.loading( "hide" )
+          content.enhanceWithin()
+        } else if (searchId > _fandango_utils._cur_displayed_search) {
+          _fandango_utils._cur_displayed_search = searchId
+          var content = $("#search").find("#results")
+          content.empty()
+
+          var list = document.createElement("ul")
+          list.setAttribute("data-role", "listview")
+          list.setAttribute("data-inset", "true")
+          list.setAttribute("data-divider-theme", "a")
+
+          list.appendChild(_fandango_utils.createRow(
+            "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
+            "ERROR LOADING",
+            "Errors happened",
+            ""))
+
+          content.append(list)
+
+          $.mobile.loading( "hide" )
+          content.enhanceWithin()
+        }
+      }
+    )
+  }, 0)
 });
 
 // Keep proper tab selected
