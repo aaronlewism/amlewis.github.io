@@ -71,7 +71,8 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
           alert("Heyo")
           var movieData = {}
           
-          var movieTitle = movie.find(".content-title").first()
+          var movieTitle = movie.find(".content-title")
+          alert(movie)
           movieData.title = movieTitle.text()
           alert(JSON.stringify(movieData))
 
