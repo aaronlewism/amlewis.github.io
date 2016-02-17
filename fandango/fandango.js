@@ -262,6 +262,8 @@ $(document).on('pagebeforecreate', '#search', function() {
   var content =  $("#search").find("#content")
   content.empty()
 
+  alert("Hey created me!")
+
   var list = document.createElement("ul")
   list.setAttribute("data-role", "listview")
   list.setAttribute("data-inset", "true")
