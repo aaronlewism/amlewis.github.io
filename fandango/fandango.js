@@ -179,7 +179,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
             movieData.title = movieTitle.text()
 
             var movieDescription = movieTitle.next()
-            movieData.description = movieDescription.html().replace(/(<br>\\s*)+$/, '')
+            movieData.description = movieDescription.html().replace(/(<br>\s*)+$/, '')
 
             movieData.image = movie.find("img").first().attr("src")
 
