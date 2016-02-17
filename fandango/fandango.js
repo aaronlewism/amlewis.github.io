@@ -270,6 +270,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 
 // Search
 $('#search-query').on("change", function() {
+    alert("Hi")
     alert($('#search-query').val());
 });
 
