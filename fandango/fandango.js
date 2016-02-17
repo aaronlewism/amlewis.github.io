@@ -232,7 +232,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
               list.appendChild(_fandango_utils.createRow(
                 movie.image,
                 movie.title,
-                movie.description,
+                description,
                 ""))
             }
           }
