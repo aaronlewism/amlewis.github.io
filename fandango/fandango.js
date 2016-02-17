@@ -68,7 +68,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
 
         alert("BBBB + " + movies.length)
         movies.each(function (index, movie) {
-          alert("Heyo " + movie)
+          alert("Heyo " + movie.html())
           var movieData = {}
           
           var movieTitle = movie.find(".content-title")
