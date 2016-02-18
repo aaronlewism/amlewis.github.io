@@ -332,7 +332,7 @@ $(document).on("keyup", "#search-query", function() {
             list.appendChild(_fandango_utils.createRow(
               "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
               query,
-              movieDescriptions.length,
+              "" + movieDescriptions.length,
               ""))
 
             content.append(list)
