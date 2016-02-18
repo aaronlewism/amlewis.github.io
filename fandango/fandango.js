@@ -73,6 +73,9 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
           movies.each(function (index, element) {
             var movie = $(element)
             var movieData = {}
+
+            var link = movie.find("a").attr("href")
+            movieData.id = link.split('/')[3]
             
             var movieTitle = movie.find(".content-title")
             movieData.title = movieTitle.text()
@@ -178,6 +181,9 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
             var movie = $(element)
             var movieData = {}
             
+            var link = movie.find("a").attr("href")
+            movieData.id = link.split('/')[3]
+
             var movieTitle = movie.find(".content-title")
             movieData.title = movieTitle.text()
 
@@ -309,6 +315,9 @@ $(document).on("keyup", "#search-query", function() {
             movies.each(function (index, element) {
               var movie = $(element)
               var movieData = {}
+
+              var link = movie.find("a").attr("href")
+              movieData.id = link.split('/')[3]
               
               var movieTitle = movie.find(".content-title")
               movieData.title = movieTitle.text()
