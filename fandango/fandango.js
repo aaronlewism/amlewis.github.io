@@ -294,11 +294,32 @@ $(document).on("keyup", "#search-query", function() {
     setTimeout(function() {
       wand.httpRequest(
         {
-          "url": "http://mobile.fandango.com/search?query=" + encodeURIComponent(query)
+          "url": "http://mobile.fandango.com/Home/SearchLazyLoad?show=SearchMovies&query=" + encodeURIComponent(query)
         },
         function (status, result) {
           if (status === 200 && result.status === 200 && searchId > _fandango_utils._cur_displayed_search) {
             _fandango_utils._cur_displayed_search = searchId
+
+            var body = document.createElement( 'html' );
+            body.innerHTML = result.body
+
+            var movies = $("#items-container", body).children("li").filter(".content-item")
+            var movieDescriptions = []
+
+            movies.each(function (index, element) {
+              var movie = $(element)
+              var movieData = {}
+              
+              var movieTitle = movie.find(".content-title")
+              movieData.title = movieTitle.text()
+
+              var movieDescription = movieTitle.next()
+              movieData.description = movieDescription.html().replace(/(<br>\s*)+$/, '')
+
+              movieData.image = movie.find("img").first().attr("src")
+              movieDescriptions.push(movieData)
+            })
+
 
             var content = $("#search").find("#results")
             content.empty()
@@ -311,7 +332,7 @@ $(document).on("keyup", "#search-query", function() {
             list.appendChild(_fandango_utils.createRow(
               "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
               query,
-              "Successful search",
+              movieDescriptions.length,
               ""))
 
             content.append(list)
