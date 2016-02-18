@@ -329,11 +329,14 @@ $(document).on("keyup", "#search-query", function() {
             list.setAttribute("data-inset", "true")
             list.setAttribute("data-divider-theme", "a")
 
-            list.appendChild(_fandango_utils.createRow(
-              "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
-              query,
-              "" + movieDescriptions.length,
-              ""))
+            for (var i=0; i<movieDescriptions.length; i++) {
+              var movie = movieDescriptions[i]
+              list.appendChild(_fandango_utils.createRow(
+                movie.image,
+                movie.title,
+                movie.description,
+                ""))
+            }
 
             content.append(list)
 
