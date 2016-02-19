@@ -51,9 +51,8 @@ $(document).on("pageinit", function () {
 
 // In Theaters
 $(document).on("pageload", "#inTheaters", function() {
-  $("#navbar").show(0)
-  $("#backButton").hide(0)
-  $("#header").enhanceWithin()
+  $("#navbar").show()
+  $("#backButton").hide()
 })
 
 $(document).on('pagebeforecreate', '#inTheaters', function() {
@@ -165,9 +164,8 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
 
 // Coming Soon
 $(document).on("pageload", "#comingSoon", function() {
-  $("#navbar").show(0)
-  $("#backButton").hide(0)
-  $("#header").enhanceWithin()
+  $("#navbar").show()
+  $("#backButton").hide()
 })
 
 $(document).on('pagebeforecreate', '#comingSoon', function() {
@@ -291,9 +289,8 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 
 // Search
 $(document).on("pageload", "#search", function() {
-  $("#navbar").hide(0)
-  $("#backButton").show(0)
-  $("#header").enhanceWithin()
+  $("#navbar").hide()
+  $("#backButton").show()
 })
 
 $(document).on("keyup", "#search-query", function() {
