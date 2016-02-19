@@ -20,7 +20,7 @@
 
     var img = $("<img/>")
     img.attr("src", image)
-    img.attr("class", "list-image")
+    img.attr("class", "list-img")
     a.append(img)
 
     var h2 = $("<h2></h2>")
