@@ -50,6 +50,12 @@ $(document).on("pageinit", function () {
 });
 
 // In Theaters
+$(document).on("pagebeforeshow", "#inTheaters", function() {
+  $("#navbar").show()
+  $("#backButton").hide()
+  $("#header").enhanceWithin()
+})
+
 $(document).on('pagebeforecreate', '#inTheaters', function() {
   var interval = setInterval(function(){
       $.mobile.loading('show');
@@ -158,6 +164,12 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
 })
 
 // Coming Soon
+$(document).on("pagebeforeshow", "#comingSoon", function() {
+  $("#navbar").show()
+  $("#backButton").hide()
+  $("#header").enhanceWithin()
+})
+
 $(document).on('pagebeforecreate', '#comingSoon', function() {
   var interval = setInterval(function(){
       $.mobile.loading('show');
@@ -278,6 +290,12 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 })
 
 // Search
+$(document).on("pagebeforeshow", "#search", function() {
+  $("#navbar").hide()
+  $("#backButton").show()
+  $("#header").enhanceWithin()
+})
+
 $(document).on("keyup", "#search-query", function() {
   var query = $('#search-query').val()
   var searchId = _fandango_utils._search_counter++
