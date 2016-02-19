@@ -44,6 +44,7 @@
 
   _fandango_utils.createDivider = createDivider
   _fandango_utils.createRow = createRow
+  _fandango_utils.createMovieCallback = createMovieCallback
 
   _fandango_utils._search_counter = 0
   _fandango_utils._cur_displayed_search = -1
