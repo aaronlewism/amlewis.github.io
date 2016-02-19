@@ -124,7 +124,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
                 movie.image,
                 movie.title,
                 movie.description,
-                createMovieCallback(movie.id)))
+                _fandango_utils.createMovieCallback(movie.id)))
             }
           }
           
@@ -262,7 +262,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
                 movie.image,
                 movie.title,
                 description,
-                createMovieCallback(movie.id)))
+                _fandango_utils.createMovieCallback(movie.id)))
             }
           }
           
@@ -370,7 +370,7 @@ $(document).on("keyup", "#search-query", function() {
                 movie.image,
                 movie.title,
                 movie.description,
-                createMovieCallback(movie.id)))
+                _fandango_utils.createMovieCallback(movie.id)))
             }
 
             content.append(list)
