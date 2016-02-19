@@ -71,13 +71,18 @@
     width: 100px;
     height: 100px;
     overflow: hidden;
+    position: relative;
 }
 
 .movie-img {
-    position: relative;
-    left: 100%;
-    top: 100%;
-    margin-left: -200%;
-    margin-top: -200%;
+    position: absolute;
+    margin: auto; 
+    min-height: 100%;
+    min-width: 100%;
+
+    left: -100%;
+    right: -100%;
+    top: -100%;
+    bottom: -100%;
 }
 </style>
