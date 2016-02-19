@@ -16,7 +16,7 @@
 
     var a = $("<a/>")
     a.attr("href", "#")
-    a.attr("onclick", onClickCallback)
+    a.click(onClickCallback)
 
     var img = $("<img/>")
     img.attr("src", image)
@@ -37,7 +37,7 @@
   function createMovieCallback(movie_id) {
     return function (event) {
       _fandango_utils.movie_id = movie_id
-      $.mobile.changePage("Movie")
+      $.mobile.pageContainer.pagecontainer("change", "#movie")
     }
   }
 
