@@ -50,7 +50,9 @@
     <div data-role="page" id="movie" data-title="Movie">
         <div role="main" class="ui-content">
             <div id="content">
-                
+                <div class="movie-img-crop">
+                    <img src="http://images.fandango.com/r99.5/imagerelay/620/350/video.fandango.com%2fFandangoMovies%2f416811-1-2500_620x350_2682230556_gen.jpg/image.jpg/cp/cpc/redesign/static/img/noxLandscape.jpg" class="movie-img">
+                </div>
             </div><!-- /content -->
         </div>
     </div><!-- /page -->
@@ -63,5 +65,16 @@
     bottom: 0;
     padding-left: 10px;
     margin: auto;
+}
+
+.movie-img-crop {
+    width: 100px;
+    height: 100px;
+    overflow: hidden;
+}
+
+.movie-img {
+    left: 50%
+    top: 50%;
 }
 </style>
