@@ -31,9 +31,9 @@
 
     row.append(a)
 
-    if (onClickCallback != "" && onClickCallback != null) {
-      row.click(onClickCallback)
-    }
+    // if (onClickCallback != "" && onClickCallback != null) {
+    //   row.click(onClickCallback)
+    // }
 
     return row
   }
