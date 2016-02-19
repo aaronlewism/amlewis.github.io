@@ -16,14 +16,14 @@
 
     var a = $("<a/>")
     a.attr("href", "#")
-    //a.attr("onclick", onClickCallback)
+    a.attr("onclick", onClickCallback)
 
     var img = $("<img/>")
     img.attr("src", image)
     a.append(img)
 
     var h2 = $("<h2></h2>")
-    h2.html("title")
+    h2.html(title)
     a.append(h2)
 
     var p = $("<p></p>")
