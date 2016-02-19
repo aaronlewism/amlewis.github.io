@@ -15,6 +15,7 @@
     row.attr("data-icon", "false")
 
     var a = $("<a/>")
+    a.attr("href", "#")
     a.attr("onclick", onClickCallback)
 
     var img = $("<img/>")
@@ -30,11 +31,6 @@
     a.append(p)
 
     row.append(a)
-
-    // if (onClickCallback != "" && onClickCallback != null) {
-    //   row.click(onClickCallback)
-    // }
-
     return row
   }
 
