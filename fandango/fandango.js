@@ -415,15 +415,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
 $( document ).on( "pagecontainerchange", function() {
       var current = $( ".ui-page-active" ).jqmData( "title" );
 
-      if (current === "Search") {
-        $("#navbar").hide()
-        $("#backButton").show()
-        $("#header").enhanceWithin()
-      } else {
-        $("#navbar").show()
-        $("#backButton").hide()
-        $("#header").enhanceWithin()
-
+      if (current !== "Movie") {
         $( "[data-role='navbar'] a.ui-btn-active" ).removeClass( "ui-btn-active" );
         // Add active class to current nav button
         $( "[data-role='navbar'] a" ).each(function() {
@@ -431,5 +423,5 @@ $( document ).on( "pagecontainerchange", function() {
             $( this ).addClass( "ui-btn-active" );
           }
         });
-      } 
+      }
     });
