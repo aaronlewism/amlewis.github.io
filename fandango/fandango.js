@@ -411,7 +411,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
   $("#backButton").show()
   $("#backButtonSpan").show()
 
-  var content = $("#movie").("#content")
+  var content = $("#movie").find("#content")
   content.empty()
 
   var text = $("<h2></h2>");
