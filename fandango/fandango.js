@@ -53,6 +53,7 @@ $(document).on("pageinit", function () {
 $(document).on("pageshow", "#inTheaters", function() {
   $("#navbar").show()
   $("#backButton").hide()
+  $("#backButtonSpan").hide()
 })
 
 $(document).on('pagebeforecreate', '#inTheaters', function() {
@@ -166,6 +167,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
 $(document).on("pageshow", "#comingSoon", function() {
   $("#navbar").show()
   $("#backButton").hide()
+  $("#backButtonSpan").hide()
 })
 
 $(document).on('pagebeforecreate', '#comingSoon', function() {
@@ -291,6 +293,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 $(document).on("pageshow", "#search", function() {
   $("#navbar").hide()
   $("#backButton").show()
+  $("#backButtonSpan").show()
 })
 
 $(document).on("keyup", "#search-query", function() {
