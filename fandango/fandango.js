@@ -5,7 +5,7 @@
     var divider = $("<li></li>")
     divider.attr("data-role", "list-divider")
     divider.attr("role", "heading")
-    divider.text("title")
+    divider.text(title)
 
     return divider
   }
@@ -27,7 +27,7 @@
     a.append(h2)
 
     var p = $("<p></p>")
-    p.innerHTML = description
+    p.html(description)
     a.append(p)
 
     row.append(a)
@@ -111,16 +111,16 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
           var content = $("#inTheaters").find("#content")
           content.empty()
 
-          var list = document.createElement("ul")
-          list.setAttribute("data-role", "listview")
-          list.setAttribute("data-inset", "true")
-          list.setAttribute("data-divider-theme", "a")
+          var list =$("<ul></ul>")
+          list.attr("data-role", "listview")
+          list.attr("data-inset", "true")
+          list.attr("data-divider-theme", "a")
 
           if (openingMovies.length > 0) {
-            list.appendChild(_fandango_utils.createDivider("Opening This Week"))
+            list.append(_fandango_utils.createDivider("Opening This Week"))
             for (var i=0; i<openingMovies.length; i++) {
               var movie = openingMovies[i]
-              list.appendChild(_fandango_utils.createRow(
+              list.append(_fandango_utils.createRow(
                 movie.image,
                 movie.title,
                 movie.description,
@@ -129,10 +129,10 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
           }
           
           if (playingMovies.length > 0) {
-            list.appendChild(_fandango_utils.createDivider("Now Playing"))
+            list.append(_fandango_utils.createDivider("Now Playing"))
             for (var i=0; i<playingMovies.length; i++) {
               var movie = playingMovies[i]
-              list.appendChild(_fandango_utils.createRow(
+              list.append(_fandango_utils.createRow(
                 movie.image,
                 movie.title,
                 movie.description,
@@ -148,14 +148,14 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
           var content = $("#inTheaters").find("#content")
           content.empty()
 
-          var list = document.createElement("ul")
-          list.setAttribute("data-role", "listview")
-          list.setAttribute("data-inset", "true")
-          list.setAttribute("data-divider-theme", "a")
+          var list =$("<ul></ul>")
+          list.attr("data-role", "listview")
+          list.attr("data-inset", "true")
+          list.attr("data-divider-theme", "a")
 
 
-          list.appendChild(_fandango_utils.createDivider("Opening This Week"))
-          list.appendChild(_fandango_utils.createRow(
+          list.append(_fandango_utils.createDivider("Opening This Week"))
+          list.append(_fandango_utils.createRow(
             "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
             "ERROR LOADING",
             "Errors happened",
@@ -220,10 +220,10 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
           var content = $("#comingSoon").find("#content")
           content.empty()
 
-          var list = document.createElement("ul")
-          list.setAttribute("data-role", "listview")
-          list.setAttribute("data-inset", "true")
-          list.setAttribute("data-divider-theme", "a")
+          var list =$("<ul></ul>")
+          list.attr("data-role", "listview")
+          list.attr("data-inset", "true")
+          list.attr("data-divider-theme", "a")
 
           function getWeekStart(dateUTC) {
             var date = new Date(dateUTC)
@@ -252,13 +252,13 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
                 var curWeekStartStr = new Date(curWeekStart).toDateString().split(' ').slice(1,3).join(' ')
                 var curWeekEndStr = new Date(curWeekEnd).toDateString().split(' ').slice(1,3).join(' ')
                 var title = "Week of " + curWeekStartStr + ' - ' + curWeekEndStr
-                list.appendChild(_fandango_utils.createDivider(title))
+                list.append(_fandango_utils.createDivider(title))
               }
               var description = movie.description
               if (curWeekStart < Date.now()) {
                 description += "<br> Opens " + weekday[movie.time.getDay()] 
               }
-              list.appendChild(_fandango_utils.createRow(
+              list.append(_fandango_utils.createRow(
                 movie.image,
                 movie.title,
                 description,
@@ -274,14 +274,14 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
           var content = $("#comingSoon").find("#content")
           content.empty()
 
-          var list = document.createElement("ul")
-          list.setAttribute("data-role", "listview")
-          list.setAttribute("data-inset", "true")
-          list.setAttribute("data-divider-theme", "a")
+          var list =$("<ul></ul>")
+          list.attr("data-role", "listview")
+          list.attr("data-inset", "true")
+          list.attr("data-divider-theme", "a")
 
 
-          list.appendChild(_fandango_utils.createDivider("Opening This Week"))
-          list.appendChild(_fandango_utils.createRow(
+          list.append(_fandango_utils.createDivider("Opening This Week"))
+          list.append(_fandango_utils.createRow(
             "",
             "ERROR LOADING",
             "Errors happened",
@@ -359,14 +359,14 @@ $(document).on("keyup", "#search-query", function() {
             var content = $("#search").find("#results")
             content.empty()
 
-            var list = document.createElement("ul")
-            list.setAttribute("data-role", "listview")
-            list.setAttribute("data-inset", "true")
-            list.setAttribute("data-divider-theme", "a")
+            var list =$("<ul></ul>")
+            list.attr("data-role", "listview")
+            list.attr("data-inset", "true")
+            list.attr("data-divider-theme", "a")
 
             for (var i=0; i<movieDescriptions.length; i++) {
               var movie = movieDescriptions[i]
-              list.appendChild(_fandango_utils.createRow(
+              list.append(_fandango_utils.createRow(
                 movie.image,
                 movie.title,
                 movie.description,
@@ -382,12 +382,12 @@ $(document).on("keyup", "#search-query", function() {
             var content = $("#search").find("#results")
             content.empty()
 
-            var list = document.createElement("ul")
-            list.setAttribute("data-role", "listview")
-            list.setAttribute("data-inset", "true")
-            list.setAttribute("data-divider-theme", "a")
+            var list =$("<ul></ul>")
+            list.attr("data-role", "listview")
+            list.attr("data-inset", "true")
+            list.attr("data-divider-theme", "a")
 
-            list.appendChild(_fandango_utils.createRow(
+            list.append(_fandango_utils.createRow(
               "",
               "ERROR LOADING",
               "Errors happened",
