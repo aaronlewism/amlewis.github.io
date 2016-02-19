@@ -384,11 +384,11 @@ $( document ).on( "pagecontainerchange", function() {
 
       if (current === "Search") {
         $("#navbar").hide()
-        $("#header").toolbar( "option", "addBackBtn", true );
+        $("#backButton").show()
         $("#header").enhanceWithin()
       } else {
         $("#navbar").show()
-        $("#header").toolbar( "option", "addBackBtn", false );
+        $("#backButton").hide()
         $("#header").enhanceWithin()
 
         $( "[data-role='navbar'] a.ui-btn-active" ).removeClass( "ui-btn-active" );
