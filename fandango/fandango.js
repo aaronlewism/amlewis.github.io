@@ -53,6 +53,7 @@ $(document).on("pageinit", function () {
 $(document).on("pageshow", "#inTheaters", function() {
   $("#navbar").show()
   $( "#header" ).toolbar( "option", "addBackBtn", false );
+  $( "#header" ).enhanceWithin();
 })
 $(document).on('pagebeforecreate', '#inTheaters', function() {
   var interval = setInterval(function(){
@@ -164,7 +165,8 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
 // Coming Soon
 $(document).on("pageshow", "#comingSoon", function() {
   $("#navbar").hide()
-  $( "#header" ).toolbar( "option", "addBackBtn", false );
+  $("#header").toolbar( "option", "addBackBtn", false );
+  $("#header").enhanceWithin();
 })
 $(document).on('pagebeforecreate', '#comingSoon', function() {
   var interval = setInterval(function(){
@@ -289,6 +291,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 $(document).on("pageshow", "#search", function() {
   $("#navbar").hide()
   $( "#header" ).toolbar( "option", "addBackBtn", true );
+  $( "#header" ).enhanceWithin();
 })
 
 $(document).on("keyup", "#search-query", function() {
