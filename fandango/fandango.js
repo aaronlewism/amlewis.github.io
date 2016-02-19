@@ -382,12 +382,14 @@ $(document).on("keyup", "#search-query", function() {
 $( document ).on( "pagecontainerchange", function() {
       var current = $( ".ui-page-active" ).jqmData( "title" );
 
-      if (current == "Search") {
+      if (current === "Search") {
         $("#navbar").hide()
         $("#header").toolbar( "option", "addBackBtn", true );
+        $("#header").enhanceWithin()
       } else {
         $("#navbar").show()
         $("#header").toolbar( "option", "addBackBtn", false );
+        $("#header").enhanceWithin()
 
         $( "[data-role='navbar'] a.ui-btn-active" ).removeClass( "ui-btn-active" );
         // Add active class to current nav button
