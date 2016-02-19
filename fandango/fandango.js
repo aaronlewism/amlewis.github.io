@@ -50,11 +50,6 @@ $(document).on("pageinit", function () {
 });
 
 // In Theaters
-$(document).on("pageshow", "#inTheaters", function() {
-  $("#navbar").show()
-  $("#header").toolbar( "option", "addBackBtn", false );
-  $("body").enhanceWithin();
-})
 $(document).on('pagebeforecreate', '#inTheaters', function() {
   var interval = setInterval(function(){
       $.mobile.loading('show');
@@ -163,11 +158,6 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
 })
 
 // Coming Soon
-$(document).on("pageshow", "#comingSoon", function() {
-  $("#navbar").hide()
-  $("#header").toolbar( "option", "addBackBtn", false );
-  $("body").enhanceWithin();
-})
 $(document).on('pagebeforecreate', '#comingSoon', function() {
   var interval = setInterval(function(){
       $.mobile.loading('show');
@@ -288,12 +278,6 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 })
 
 // Search
-$(document).on("pageshow", "#search", function() {
-  $("#navbar").hide()
-  $("#header").toolbar( "option", "addBackBtn", true );
-  $("body").enhanceWithin();
-})
-
 $(document).on("keyup", "#search-query", function() {
   var query = $('#search-query').val()
   var searchId = _fandango_utils._search_counter++
@@ -397,11 +381,20 @@ $(document).on("keyup", "#search-query", function() {
 // Keep proper tab selected
 $( document ).on( "pagecontainerchange", function() {
       var current = $( ".ui-page-active" ).jqmData( "title" );
-      $( "[data-role='navbar'] a.ui-btn-active" ).removeClass( "ui-btn-active" );
-      // Add active class to current nav button
-      $( "[data-role='navbar'] a" ).each(function() {
-        if ( $( this ).text() === current ) {
-          $( this ).addClass( "ui-btn-active" );
-        }
-      });
+
+      if (current == "search") {
+        $("#navbar").hide()
+        $("#header").toolbar( "option", "addBackBtn", true );
+      } else {
+        $("#navbar").show()
+        $("#header").toolbar( "option", "addBackBtn", false );
+
+        $( "[data-role='navbar'] a.ui-btn-active" ).removeClass( "ui-btn-active" );
+        // Add active class to current nav button
+        $( "[data-role='navbar'] a" ).each(function() {
+          if ( $( this ).text() === current ) {
+            $( this ).addClass( "ui-btn-active" );
+          }
+        });
+      } 
     });
