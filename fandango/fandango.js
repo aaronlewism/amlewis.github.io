@@ -50,6 +50,9 @@ $(document).on("pageinit", function () {
 });
 
 // In Theaters
+$(document).on("pageshow", "#inTheaters", function() {
+  $("#header").show()
+})
 $(document).on('pagebeforecreate', '#inTheaters', function() {
   var interval = setInterval(function(){
       $.mobile.loading('show');
@@ -158,6 +161,9 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
 })
 
 // Coming Soon
+$(document).on("pageshow", "#comingSoon", function() {
+  $("#header").hide()
+})
 $(document).on('pagebeforecreate', '#comingSoon', function() {
   var interval = setInterval(function(){
       $.mobile.loading('show');
@@ -262,7 +268,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 
           list.appendChild(_fandango_utils.createDivider("Opening This Week"))
           list.appendChild(_fandango_utils.createRow(
-            "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
+            "",
             "ERROR LOADING",
             "Errors happened",
             ""))
@@ -278,6 +284,10 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 })
 
 // Search
+$(document).on("pageshow", "#search", function() {
+  $("#header").hide()
+})
+
 $(document).on("keyup", "#search-query", function() {
   var query = $('#search-query').val()
   var searchId = _fandango_utils._search_counter++
@@ -362,7 +372,7 @@ $(document).on("keyup", "#search-query", function() {
             list.setAttribute("data-divider-theme", "a")
 
             list.appendChild(_fandango_utils.createRow(
-              "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
+              "",
               "ERROR LOADING",
               "Errors happened",
               ""))
