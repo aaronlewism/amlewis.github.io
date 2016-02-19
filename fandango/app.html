@@ -49,14 +49,18 @@
     </div><!-- /page -->
     <div data-role="page" id="movie" data-title="Movie">
         <div role="main" class="ui-content">
-            <div class="movie-img-crop">
-                 <img id="videoThumb" src="http://images.fandango.com/r99.5/imagerelay/620/350/video.fandango.com%2fFandangoMovies%2f416811-1-2500_620x350_2682230556_gen.jpg/image.jpg/cp/cpc/redesign/static/img/noxLandscape.jpg" class="movie-img"/>
-                 <h2 id="title">Deadpool</h2>
-                 <p>
-                    Ryan Reynolds <br/>
-                    R, 1 hr 53 min <br/>
-                    Action/Adventure
-                </p>
+            <div class="movie-title-card">
+                <div class="movie-img-crop">
+                     <img id="videoThumb" src="http://images.fandango.com/r99.5/imagerelay/620/350/video.fandango.com%2fFandangoMovies%2f416811-1-2500_620x350_2682230556_gen.jpg/image.jpg/cp/cpc/redesign/static/img/noxLandscape.jpg" class="movie-img"/>
+                </div>
+                <div class="movie-title">
+                    <h2 id="title">Deadpool</h2>
+                     <p>
+                        Ryan Reynolds <br/>
+                        R, 1 hr 53 min <br/>
+                        Action/Adventure
+                    </p>
+                </div>
             </div>
             <div id="content">
             </div><!-- /content -->
@@ -74,6 +78,7 @@
 }
 
 .movie-img-crop {
+    float: left;
     width: 100px;
     height: 100px;
     overflow: hidden;
@@ -84,5 +89,10 @@
     width: 100px;
     height: 100px;
     object-fit: cover;
+}
+
+.movie-title {
+    float: left;
+    overflow: hidden;
 }
 </style>
