@@ -52,7 +52,7 @@ $(document).on("pageinit", function () {
 // In Theaters
 $(document).on("pageshow", "#inTheaters", function() {
   $("#navbar").show()
-  $("#movieHeader").hide()
+  $("#backButton").hide()
 })
 
 $(document).on('pagebeforecreate', '#inTheaters', function() {
@@ -165,7 +165,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
 // Coming Soon
 $(document).on("pageshow", "#comingSoon", function() {
   $("#navbar").show()
-  $("#movieHeader").hide()
+  $("#backButton").hide()
 })
 
 $(document).on('pagebeforecreate', '#comingSoon', function() {
@@ -290,7 +290,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 // Search
 $(document).on("pageshow", "#search", function() {
   $("#navbar").hide()
-  $("#movieHeader").show()
+  $("#backButton").show()
 })
 
 $(document).on("keyup", "#search-query", function() {
@@ -399,11 +399,11 @@ $( document ).on( "pagecontainerchange", function() {
 
       if (current === "Search") {
         $("#navbar").hide()
-        $("#movieHeader").show()
+        $("#backButton").show()
         $("#header").enhanceWithin()
       } else {
         $("#navbar").show()
-        $("#movieHeader").hide()
+        $("#backButton").hide()
         $("#header").enhanceWithin()
 
         $( "[data-role='navbar'] a.ui-btn-active" ).removeClass( "ui-btn-active" );
