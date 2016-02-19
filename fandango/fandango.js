@@ -31,7 +31,18 @@
 
     row.appendChild(a)
 
+    if (onClickCallback != "" || onClickCallback != null) {
+      $(row).click(onClickCallback)
+    }
+
     return row
+  }
+
+  function createMovieCallback(movie_id) {
+    return function (event) {
+      _fandango_utils.movie_id = movie_id
+      $.mobile.changePage("Movie")
+    }
   }
 
 
@@ -40,6 +51,7 @@
 
   _fandango_utils._search_counter = 0
   _fandango_utils._cur_displayed_search = -1
+  _fandango_utils.movie_id = null
 
   obj._fandango_utils = _fandango_utils;
 })(window);
@@ -116,7 +128,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
                 movie.image,
                 movie.title,
                 movie.description,
-                ""))
+                createMovieCallback(movie.id)))
             }
           }
           
@@ -254,7 +266,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
                 movie.image,
                 movie.title,
                 description,
-                ""))
+                createMovieCallback(movie.id)))
             }
           }
           
@@ -291,9 +303,9 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 
 // Search
 $(document).on("pagebeforeshow", "#search", function() {
-  $("#navbar").hide()
-  $("#backButton").show()
-  $("#backButtonSpan").show()
+  $("#navbar").show()
+  $("#backButton").hide()
+  $("#backButtonSpan").hide()
 })
 
 $(document).on("keyup", "#search-query", function() {
@@ -362,7 +374,7 @@ $(document).on("keyup", "#search-query", function() {
                 movie.image,
                 movie.title,
                 movie.description,
-                ""))
+                createMovieCallback(movie.id)))
             }
 
             content.append(list)
@@ -395,6 +407,12 @@ $(document).on("keyup", "#search-query", function() {
     }, 0)
   }
 });
+
+$(document).on("pagebeforeshow", "#movie", function() {
+  $("#navbar").hide()
+  $("#backButton").show()
+  $("#backButtonSpan").show()
+})
 
 // Keep proper tab selected
 $( document ).on( "pagecontainerchange", function() {
