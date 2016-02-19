@@ -52,8 +52,8 @@ $(document).on("pageinit", function () {
 // In Theaters
 $(document).on("pageshow", "#inTheaters", function() {
   $("#navbar").show()
-  $( "#header" ).toolbar( "option", "addBackBtn", false );
-  $( "#header" ).enhanceWithin();
+  $("#header").toolbar( "option", "addBackBtn", false );
+  $("body").enhanceWithin();
 })
 $(document).on('pagebeforecreate', '#inTheaters', function() {
   var interval = setInterval(function(){
@@ -166,7 +166,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
 $(document).on("pageshow", "#comingSoon", function() {
   $("#navbar").hide()
   $("#header").toolbar( "option", "addBackBtn", false );
-  $("#header").enhanceWithin();
+  $("body").enhanceWithin();
 })
 $(document).on('pagebeforecreate', '#comingSoon', function() {
   var interval = setInterval(function(){
@@ -290,8 +290,8 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
 // Search
 $(document).on("pageshow", "#search", function() {
   $("#navbar").hide()
-  $( "#header" ).toolbar( "option", "addBackBtn", true );
-  $( "#header" ).enhanceWithin();
+  $("#header").toolbar( "option", "addBackBtn", true );
+  $("body").enhanceWithin();
 })
 
 $(document).on("keyup", "#search-query", function() {
