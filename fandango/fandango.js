@@ -16,7 +16,7 @@
 
     var a = $("<a/>")
     a.attr("href", "#")
-    a.attr("onclick", onClickCallback)
+    //a.attr("onclick", onClickCallback)
 
     var img = $("<img/>")
     img.attr("src", image)
