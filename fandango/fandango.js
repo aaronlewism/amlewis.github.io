@@ -2,34 +2,34 @@
   var _fandango_utils = {};
 
   function createDivider(title) {
-    var divider = document.createElement("li")
-    divider.setAttribute("data-role", "list-divider")
-    divider.setAttribute("role", "heading")
-    divider.textContent = title
+    var divider = $("<li></li>")
+    divider.attr("data-role", "list-divider")
+    divider.attr("role", "heading")
+    divider.text("title")
 
     return divider
   }
 
   function createRow(image, title, description, onClickCallback) {
-    var row = document.createElement("li")
-    row.setAttribute("data-icon", "false")
+    var row = $("<li></li>")
+    row.attr("data-icon", "false")
 
-    var a = document.createElement("a")
-    a.setAttribute("onclick", onClickCallback)
+    var a = $("<a/>")
+    a.attr("onclick", onClickCallback)
 
-    var img = document.createElement("img")
-    img.setAttribute("src", image)
-    a.appendChild(img)
+    var img = $("<img/>")
+    img.attr("src", image)
+    a.append(img)
 
-    var h2 = document.createElement("h2")
-    h2.innerHTML = title
-    a.appendChild(h2)
+    var h2 = $("<h2></h2>")
+    h2.html("title")
+    a.append(h2)
 
-    var p = document.createElement("p")
+    var p = $("<p></p>")
     p.innerHTML = description
-    a.appendChild(p)
+    a.append(p)
 
-    row.appendChild(a)
+    row.append(a)
 
     if (onClickCallback != "" || onClickCallback != null) {
       $(row).click(onClickCallback)
