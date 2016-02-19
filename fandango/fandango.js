@@ -32,7 +32,7 @@
     row.append(a)
 
     if (onClickCallback != "" && onClickCallback != null) {
-      $(row).click(onClickCallback)
+      row.click(onClickCallback)
     }
 
     return row
