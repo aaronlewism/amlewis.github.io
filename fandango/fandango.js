@@ -382,7 +382,7 @@ $(document).on("keyup", "#search-query", function() {
 $( document ).on( "pagecontainerchange", function() {
       var current = $( ".ui-page-active" ).jqmData( "title" );
 
-      if (current == "search") {
+      if (current == "Search") {
         $("#navbar").hide()
         $("#header").toolbar( "option", "addBackBtn", true );
       } else {
