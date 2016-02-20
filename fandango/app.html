@@ -54,10 +54,12 @@
                      <img id="videoThumb" src="http://images.fandango.com/r99.5/imagerelay/620/350/video.fandango.com%2fFandangoMovies%2f416811-1-2500_620x350_2682230556_gen.jpg/image.jpg/cp/cpc/redesign/static/img/noxLandscape.jpg" class="movie-img"/>
                 </div>
                 <div class="movie-title">
-                    <h2 id="title">Deadpool</h2>
-                    <p>Ryan Reynolds<br/>
+                    <h2 id="title" class="movie-title-text">Deadpool</h2>
+                    <p class="movie-title-desc">
+                        Ryan Reynolds<br/>
                         R, 1 hr 53 min<br/>
-                        Action/Adventure</p>
+                        Action/Adventure
+                    </p>
                 </div>
             </div>
             <div id="content" class="movie-details">
@@ -92,7 +94,6 @@
 .movie-title {
     float: left;
     overflow: hidden;
-    margin: 0;
 }
 
 .movie-details {
@@ -100,7 +101,12 @@
     clear: left;
 }
 
-#title {
+.movie-title-text {
+    margin: 0;
+    padding: 0;
+}
+
+.movie-title-text {
     margin: 0;
     padding: 0;
 }
