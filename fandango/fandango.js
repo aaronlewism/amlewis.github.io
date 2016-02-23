@@ -138,7 +138,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
                 movie.image,
                 movie.title,
                 movie.description,
-                ""))
+                _fandango_utils.createMovieCallback(movie.id)))
             }
           }
 
@@ -461,7 +461,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
 
             list.append(_fandango_utils.createRow(
               "",
-              "ERROR LOADING",
+              movie_id,
               "Errors happened",
               ""))
 
