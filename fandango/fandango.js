@@ -457,7 +457,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
             if (desc) {
               desc += "<br/>"
             }
-            desc += movieDetails.find(".movie-genre").text().replace("<br>", ",")
+            desc += movieDetails.find(".movie-genre").text().replace("<br>", ", ")
             
             $("#movie").find("#title").text(movie.children("[itemprop=\"name\"]").attr("content"))
             $("#movie").find("#videoThumb").attr("src", trailer.children("[itemprop=\"thumbnailUrl\"]").attr("content"))
