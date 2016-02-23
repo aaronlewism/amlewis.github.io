@@ -480,11 +480,10 @@ $(document).on("pagebeforeshow", "#movie", function() {
               var director = directors
               while (director) {
                 list.append(_fandango_utils.createElement(
-                  director.children("[itemprop=\"image\"]").attr("content")
+                  director.children("[itemprop=\"image\"]").attr("content"),
                   director.children("[itemprop=\"name\"]").attr("content"),
                   "",
-                  ""
-                  ))
+                  ""))
                 director = director.next()
               }
             }
@@ -494,11 +493,10 @@ $(document).on("pagebeforeshow", "#movie", function() {
               var actor = actors
               while (actor) {
                 list.append(_fandango_utils.createElement(
-                  actor.children("[itemprop=\"image\"]").attr("content")
+                  actor.children("[itemprop=\"image\"]").attr("content"),
                   actor.children("[itemprop=\"name\"]").attr("content"),
                   "",
-                  ""
-                  ))
+                  ""))
                 actor = actor.next()
               }
             }
