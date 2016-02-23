@@ -412,13 +412,69 @@ $(document).on("pagebeforeshow", "#movie", function() {
   $("#backButton").show()
   $("#backButtonSpan").show()
 
+  var movieId = _fandango_utils.movie_id
+
   var content = $("#movie").find("#content")
   content.empty()
-
-  var text = $("<h2></h2>");
-  content.text(_fandango_utils.movie_id)
-
   content.enhanceWithin()
+
+  var interval = setInterval(function(){
+    $.mobile.loading('show');
+    clearInterval(interval);
+  },1); 
+
+  setTimeout(function() {
+      wand.httpRequest(
+        {
+          "url": ":http://www.fandango.com/" + movieId + "/movieoverview"
+        },
+        function (status, result) {
+          if (status === 200 && result.status === 200 && movieId === _fandango_utils.movie_id) {
+
+            var body = document.createElement( 'html' );
+            body.innerHTML = result.body
+
+            var movie = $("[itemtype=\"http://schema.org/Movie\"]", body)
+            
+            $("#movie").find("#title").text(movie.children("[itemprop=\"name\"]").attr("content"))
+
+            var content = $("#movie").find("#content")
+            content.empty()
+
+            var list =$("<ul></ul>")
+            list.attr("data-role", "listview")
+            list.attr("data-inset", "true")
+            list.attr("data-divider-theme", "a")
+
+            content.append(list)
+
+            $.mobile.loading( "hide" )
+            content.enhanceWithin()
+          } else if ( movieId === _fandango_utils.movie_id) {
+            _fandango_utils._cur_displayed_search = searchId
+            var content = $("#movie").find("#content")
+            content.empty()
+
+            var list =$("<ul></ul>")
+            list.attr("data-role", "listview")
+            list.attr("data-inset", "true")
+            list.attr("data-divider-theme", "a")
+
+            list.append(_fandango_utils.createRow(
+              "",
+              "ERROR LOADING",
+              "Errors happened",
+              ""))
+
+            content.append(list)
+
+            $.mobile.loading( "hide" )
+            content.enhanceWithin()
+          }
+        }
+      )
+    }
+  )
 })
 
 // Keep proper tab selected
