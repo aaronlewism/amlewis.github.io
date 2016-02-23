@@ -426,7 +426,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
   setTimeout(function() {
       wand.httpRequest(
         {
-          "url": "http://www.fandango.com/" + movieId + "/movieoverview"
+          "url": "http://www.fandango.com/" + movieId.replace('-', '_') + "/movieoverview"
         },
         function (status, result) {
           if (status === 200 && result.status === 200 && movieId === _fandango_utils.movie_id) {
