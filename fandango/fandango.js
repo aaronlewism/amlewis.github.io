@@ -436,16 +436,16 @@ $(document).on("pagebeforeshow", "#movie", function() {
 
             var movie = $("[itemtype=\"http://schema.org/Movie\"]", body)
             var trailer = movie.find("[itemprop=\"trailer\"]")
-            var actors = movie.find("[itemprop=\"actor\"]").toArray()
+            var actors = movie.find("[itemprop=\"actor\"]")
             var movieDetails = $(".movie-detail", body)
 
             var desc = ""
             if (actors) {
               if (actors.length >= 2) {
-                desc = actors[0].children("[itemprop=\"name\"]").attr("content") + "," +
-                    actors[1].children("[itemprop=\"name\"]").attr("content") 
+                desc = actors.children("[itemprop=\"name\"]").attr("content") + "," +
+                    actors.next().children("[itemprop=\"name\"]").attr("content") 
               } else {
-                desc = actors[0].children("[itemprop=\"name\"]").attr("content")
+                desc = actors.children("[itemprop=\"name\"]").attr("content")
               }
             }
 
