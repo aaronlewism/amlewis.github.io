@@ -478,7 +478,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
             if (directors) {
               list.append(_fandango_utils.createDivider("Director"))
               var director = directors
-              while (director) {
+              while (director && director.length > 0) {
                 list.append(_fandango_utils.createElement(
                   director.children("[itemprop=\"image\"]").attr("content"),
                   director.children("[itemprop=\"name\"]").attr("content"),
@@ -491,7 +491,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
             if (actors) {
               list.append(_fandango_utils.createDivider("Cast"))
               var actor = actors
-              while (actor) {
+              while (actor && actor.length > 0) {
                 list.append(_fandango_utils.createElement(
                   actor.children("[itemprop=\"image\"]").attr("content"),
                   actor.children("[itemprop=\"name\"]").attr("content"),
