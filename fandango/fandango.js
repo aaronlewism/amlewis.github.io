@@ -461,7 +461,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
 
             list.append(_fandango_utils.createRow(
               "",
-              movie_id,
+              movieId,
               "Errors happened",
               ""))
 
