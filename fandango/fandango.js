@@ -411,6 +411,14 @@ $(document).on("pagebeforeshow", "#movie", function() {
   $("#navbar").hide()
   $("#backButton").show()
   $("#backButtonSpan").show()
+
+  var content = $("#movie").find("#content")
+  content.empty()
+
+  var text = $("<h2></h2>");
+  content.text(_fandango_utils.movie_id)
+
+  content.enhanceWithin()
 })
 
 // Keep proper tab selected
