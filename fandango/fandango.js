@@ -443,7 +443,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
             var movieDetails = $(".movie-detail", body)
 
             var desc = ""
-            if (actors) {
+            if (actors.length > 0) {
               if (actors.length >= 2) {
                 desc = actors.children("[itemprop=\"name\"]").attr("content") + ", " +
                     actors.next().children("[itemprop=\"name\"]").attr("content") 
