@@ -437,12 +437,13 @@ $(document).on("pagebeforeshow", "#movie", function() {
             var movie = $("[itemtype=\"http://schema.org/Movie\"]", body)
             var trailer = movie.find("[itemprop=\"trailer\"]")
             var actors = movie.find("[itemprop=\"actor\"]")
+            var directors = movie.find("[itemprop=\"director\"]")
             var movieDetails = $(".movie-detail", body)
 
             var desc = ""
             if (actors) {
               if (actors.length >= 2) {
-                desc = actors.children("[itemprop=\"name\"]").attr("content") + "," +
+                desc = actors.children("[itemprop=\"name\"]").attr("content") + ", " +
                     actors.next().children("[itemprop=\"name\"]").attr("content") 
               } else {
                 desc = actors.children("[itemprop=\"name\"]").attr("content")
@@ -471,6 +472,10 @@ $(document).on("pagebeforeshow", "#movie", function() {
             list.attr("data-role", "listview")
             list.attr("data-inset", "true")
             list.attr("data-divider-theme", "a")
+
+            if (directors) {
+              list.append(_fandango_utils.createDivider("Director"))
+            }
 
             content.append(list)
 
