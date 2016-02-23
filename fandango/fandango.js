@@ -435,8 +435,33 @@ $(document).on("pagebeforeshow", "#movie", function() {
             body.innerHTML = result.body
 
             var movie = $("[itemtype=\"http://schema.org/Movie\"]", body)
+            var trailer = movie.find("[itemprop=\"trailer\"]")
+            var actors = movie.find("[itemprop=\"actor\"]").toArray()
+            var movieDetails = $(".movie-detail", body)
+
+            var desc = ""
+            if (actors) {
+              if (actors.length >= 2) {
+                desc = actors[0].children("[itemprop=\"name\"]").attr("content") + "," +
+                    actors[1].children("[itemprop=\"name\"]").attr("content") 
+              } else {
+                desc = actors[0].children("[itemprop=\"name\"]").attr("content")
+              }
+            }
+
+            if (desc) {
+              desc += "<br/>"
+            }
+            desc += movieDetails.find(".movie-rating").text()
+
+            if (desc) {
+              desc += "<br/>"
+            }
+            desc += movieDetails.find(".movie-genre").text().replace("<br>", ",")
             
             $("#movie").find("#title").text(movie.children("[itemprop=\"name\"]").attr("content"))
+            $("#movie").find("#videoThumb").attr("src", trailer.children("[itemprop=\"thumbnailUrl\"]").attr("content"))
+            $("#movie").find("#desc").html(desc)
 
             var content = $("#movie").find("#content")
             content.empty()
