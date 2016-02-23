@@ -478,7 +478,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
             if (directors) {
               list.append(_fandango_utils.createDivider("Director"))
               directors.each(function (index) {
-                list.append(_fandango_utils.createElement(
+                list.append(_fandango_utils.createRow(
                   $(this).children("[itemprop=\"image\"]").attr("content"),
                   $(this).children("[itemprop=\"name\"]").attr("content"),
                   "",
@@ -489,7 +489,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
             if (actors) {
               list.append(_fandango_utils.createDivider("Cast"))
               actors.each(function (index) {
-                list.append(_fandango_utils.createElement(
+                list.append(_fandango_utils.createRow(
                   $(this).children("[itemprop=\"image\"]").attr("content"),
                   $(this).children("[itemprop=\"name\"]").attr("content"),
                   "",
