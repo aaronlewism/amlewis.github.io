@@ -475,7 +475,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
             list.attr("data-inset", "true")
             list.attr("data-divider-theme", "a")
 
-            if (directors) {
+            if (directors.length > 0) {
               list.append(_fandango_utils.createDivider("Director"))
               directors.each(function (index) {
                 list.append(_fandango_utils.createRow(
@@ -486,7 +486,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
               })
             }
 
-            if (actors) {
+            if (actors.length > 0) {
               list.append(_fandango_utils.createDivider("Cast"))
               actors.each(function (index) {
                 list.append(_fandango_utils.createRow(
