@@ -477,28 +477,24 @@ $(document).on("pagebeforeshow", "#movie", function() {
 
             if (directors) {
               list.append(_fandango_utils.createDivider("Director"))
-              var director = directors
-              while (director && director.length > 0) {
+              directors.each(function (index) {
                 list.append(_fandango_utils.createElement(
-                  director.children("[itemprop=\"image\"]").attr("content"),
-                  director.children("[itemprop=\"name\"]").attr("content"),
+                  $(this).children("[itemprop=\"image\"]").attr("content"),
+                  $(this).children("[itemprop=\"name\"]").attr("content"),
                   "",
                   ""))
-                director = director.next()
-              }
+              })
             }
 
             if (actors) {
               list.append(_fandango_utils.createDivider("Cast"))
-              var actor = actors
-              while (actor && actor.length > 0) {
+              actors.each(function (index) {
                 list.append(_fandango_utils.createElement(
-                  actor.children("[itemprop=\"image\"]").attr("content"),
-                  actor.children("[itemprop=\"name\"]").attr("content"),
+                  $(this).children("[itemprop=\"image\"]").attr("content"),
+                  $(this).children("[itemprop=\"name\"]").attr("content"),
                   "",
                   ""))
-                actor = actor.next()
-              }
+              })
             }
 
             content.append(list)
