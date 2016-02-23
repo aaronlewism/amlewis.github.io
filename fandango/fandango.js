@@ -462,6 +462,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
             $("#movie").find("#title").text(movie.children("[itemprop=\"name\"]").attr("content"))
             $("#movie").find("#videoThumb").attr("src", trailer.children("[itemprop=\"thumbnailUrl\"]").attr("content"))
             $("#movie").find("#desc").html(desc)
+            $("#movie").find("#summary").text(movie.children("[itemprop=\"description\"]").attr("content"))
 
             var content = $("#movie").find("#content")
             content.empty()
