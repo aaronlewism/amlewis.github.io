@@ -426,12 +426,12 @@ $(document).on("pagebeforeshow", "#movie", function() {
   setTimeout(function() {
       wand.httpRequest(
         {
-          "url": ":http://www.fandango.com/" + movieId + "/movieoverview"
+          "url": "http://www.fandango.com/" + movieId + "/movieoverview"
         },
         function (status, result) {
           if (status === 200 && result.status === 200 && movieId === _fandango_utils.movie_id) {
 
-            var body = document.createElement( 'html' );
+            var body = document.createElement('html');
             body.innerHTML = result.body
 
             var movie = $("[itemtype=\"http://schema.org/Movie\"]", body)
@@ -451,7 +451,6 @@ $(document).on("pagebeforeshow", "#movie", function() {
             $.mobile.loading( "hide" )
             content.enhanceWithin()
           } else if ( movieId === _fandango_utils.movie_id) {
-            _fandango_utils._cur_displayed_search = searchId
             var content = $("#movie").find("#content")
             content.empty()
 
