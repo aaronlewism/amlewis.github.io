@@ -478,8 +478,12 @@ $(document).on("pagebeforeshow", "#movie", function() {
             if (directors.length > 0) {
               list.append(_fandango_utils.createDivider("Director"))
               directors.each(function (index) {
+                var image = $(this).children("[itemprop=\"image\"]").attr("content")
+                if (!image) {
+                  image =  "http://images.fandango.com/r99.5/redesign/static/img/no-image-portrait.png"
+                }
                 list.append(_fandango_utils.createRow(
-                  $(this).children("[itemprop=\"image\"]").attr("content"),
+                  image,
                   $(this).children("[itemprop=\"name\"]").attr("content"),
                   "",
                   ""))
@@ -489,8 +493,12 @@ $(document).on("pagebeforeshow", "#movie", function() {
             if (actors.length > 0) {
               list.append(_fandango_utils.createDivider("Cast"))
               actors.each(function (index) {
+                var image = $(this).children("[itemprop=\"image\"]").attr("content")
+                if (!image) {
+                  image =  "http://images.fandango.com/r99.5/redesign/static/img/no-image-portrait.png"
+                }
                 list.append(_fandango_utils.createRow(
-                  $(this).children("[itemprop=\"image\"]").attr("content"),
+                  image,
                   $(this).children("[itemprop=\"name\"]").attr("content"),
                   "",
                   ""))
