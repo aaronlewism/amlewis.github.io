@@ -494,7 +494,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
 
             if (actors.length > 0) {
               smartMovie.actors = []
-              directors.each(function (index) {
+              actors.each(function (index) {
                 var smartActor = {}
                 smartActor.meta = {}
                 smartActor.meta["@"] = "person"
@@ -529,7 +529,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
                 }
                 list.append(_fandango_utils.createRow(
                   image,
-                  director.title,
+                  director.name,
                   "",
                   function() { wand.handleTypedData(director, null) }))
               }
@@ -545,7 +545,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
                 }
                 list.append(_fandango_utils.createRow(
                   image,
-                  actor.title,
+                  actor.name,
                   "",
                   function() { wand.handleTypedData(actor, null) }))
               }
