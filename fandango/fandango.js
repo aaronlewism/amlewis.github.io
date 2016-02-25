@@ -505,7 +505,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
               actors.each(function (index) {
                 var smartActor = {}
                 smartActor["@"] = "person"
-                smartActor.meta = {}=
+                smartActor.meta = {}
                 smartActor.meta["@"] = "meta"
                 var url = $(this).children("[itemprop=\"url\"]").attr("content")
                 if (url) {
