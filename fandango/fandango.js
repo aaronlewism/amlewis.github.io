@@ -468,11 +468,48 @@ $(document).on("pagebeforeshow", "#movie", function() {
               desc += "<br/>"
             }
             desc += movieDetails.find(".movie-genre").text().replace("<br>", ", ")
-            
-            $("#movie").find("#title").text(movie.children("[itemprop=\"name\"]").attr("content"))
+
+            var smartMovie = {}
+            smartMovie.meta = {}
+            smartMovie.meta["@"] = "movie"
+            smartMovie.meta.url = movie.children("[itemprop=\"url\"]").attr("content")
+            smartMovie.meta.icon = movie.children("[itemprop=\"icon\"]").attr("content")
+
+            smartMovie.title = movie.children("[itemprop=\"name\"]").attr("content")
+            smartMovie.synopsis = movie.children("[itemprop=\"description\"]").attr("content")
+            smartMovie.maturity_rating = movie.children("[itemprop=\"contentRating\"]").attr("content")
+
+            if (directors.length > 0) {
+              smartMovie.directors = []
+              directors.each(function (index) {
+                var smartDirector = {}
+                smartDirector.meta = {}
+                smartDirector.meta["@"] = "person"
+                smartDirector.meta.url = $(this).children("[itemprop=\"url\"]").attr("content")
+                smartDirector.meta.icon = $(this).children("[itemprop=\"image\"]").attr("content")
+                smartDirector.name =  $(this).children("[itemprop=\"name\"]").attr("content")
+                smartMovie.directors.append(smartDirector)
+              })
+            }
+
+            if (actors.length > 0) {
+              smartMovie.actors = []
+              directors.each(function (index) {
+                var smartActor = {}
+                smartActor.meta = {}
+                smartActor.meta["@"] = "person"
+                smartActor.meta.url = $(this).children("[itemprop=\"url\"]").attr("content")
+                smartActor.meta.icon = $(this).children("[itemprop=\"image\"]").attr("content")
+                smartActor.name =  $(this).children("[itemprop=\"name\"]").attr("content")
+                smartMovie.actors.append(smartActor)
+              })
+            }
+
+
+            $("#movie").find("#title").text(smartMovie.title)
             $("#movie").find("#videoThumb").attr("src", trailer.children("[itemprop=\"thumbnailUrl\"]").attr("content"))
             $("#movie").find("#desc").html(desc)
-            $("#movie").find("#summary").text(movie.children("[itemprop=\"description\"]").attr("content"))
+            $("#movie").find("#summary").text(smartMovie.synopsis)
 
             var content = $("#movie").find("#content")
             content.empty()
@@ -482,39 +519,41 @@ $(document).on("pagebeforeshow", "#movie", function() {
             list.attr("data-inset", "true")
             list.attr("data-divider-theme", "a")
 
-            if (directors.length > 0) {
+            if (smartMovie.directors) {
               list.append(_fandango_utils.createDivider("Director"))
-              directors.each(function (index) {
-                var image = $(this).children("[itemprop=\"image\"]").attr("content")
+              for (var director : smartMovie.directors) {
+                var thisDirector = director
+                var image = director.meta.icon
                 if (!image) {
                   image =  "http://images.fandango.com/r99.5/redesign/static/img/no-image-portrait.png"
                 }
                 list.append(_fandango_utils.createRow(
                   image,
-                  $(this).children("[itemprop=\"name\"]").attr("content"),
+                  director.title,
                   "",
-                  ""))
-              })
+                  new function() { wand.handdleTypedData(thisDirector, null) }))
+              }
             }
 
-            if (actors.length > 0) {
+            if (smartMovie.actors) {
               list.append(_fandango_utils.createDivider("Cast"))
-              actors.each(function (index) {
-                var image = $(this).children("[itemprop=\"image\"]").attr("content")
+              for (var actor : smartMovie.actors) {
+                var thisActor = actor
+                var image = actor.meta.icon
                 if (!image) {
                   image =  "http://images.fandango.com/r99.5/redesign/static/img/no-image-portrait.png"
                 }
                 list.append(_fandango_utils.createRow(
                   image,
-                  $(this).children("[itemprop=\"name\"]").attr("content"),
+                  actor.title,
                   "",
-                  ""))
-              })
+                  new function() { wand.handdleTypedData(thisActor, null) }))
+              }
             }
 
             content.append(list)
 
-            $("#shareButton").click("")
+            $("#shareButton").click(new function() { wand.handdleTypedData(smartMovie, null) })
 
             $.mobile.loading( "hide" )
             $("#movieMain").show()
