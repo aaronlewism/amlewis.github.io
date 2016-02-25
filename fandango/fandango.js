@@ -485,8 +485,14 @@ $(document).on("pagebeforeshow", "#movie", function() {
                 var smartDirector = {}
                 smartDirector.meta = {}
                 smartDirector.meta["@"] = "person"
-                smartDirector.meta.url = $(this).children("[itemprop=\"url\"]").attr("content")
-                smartDirector.meta.icon = $(this).children("[itemprop=\"image\"]").attr("content")
+                var url = $(this).children("[itemprop=\"url\"]").attr("content")
+                if (url) {
+                  smartDirector.meta.url = url
+                }
+                var icon = $(this).children("[itemprop=\"image\"]").attr("content")
+                if (icon) {
+                  smartDirector.meta.icon = icon
+                }
                 smartDirector.name =  $(this).children("[itemprop=\"name\"]").attr("content")
                 smartMovie.directors.push(smartDirector)
               })
@@ -498,8 +504,14 @@ $(document).on("pagebeforeshow", "#movie", function() {
                 var smartActor = {}
                 smartActor.meta = {}
                 smartActor.meta["@"] = "person"
-                smartActor.meta.url = $(this).children("[itemprop=\"url\"]").attr("content")
-                smartActor.meta.icon = $(this).children("[itemprop=\"image\"]").attr("content")
+                var url = $(this).children("[itemprop=\"url\"]").attr("content")
+                if (url) {
+                  smartActor.meta.url = url
+                }
+                var icon = $(this).children("[itemprop=\"image\"]").attr("content")
+                if (icon) {
+                  smartActor.meta.icon = icon
+                }
                 smartActor.name =  $(this).children("[itemprop=\"name\"]").attr("content")
                 smartMovie.actors.push(smartActor)
               })
