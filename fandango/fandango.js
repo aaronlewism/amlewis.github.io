@@ -44,6 +44,20 @@
     }
   }
 
+  function createError() {
+    var div = $("<div></div>")
+
+    var header = $("<h2></h2>")
+    header.text("An Error Has Occured")
+    div.append(header)
+
+    var text = $("<p></p>")
+    text.text("Please try again later")
+    div.append(text)
+
+    return div
+  }
+
 
   _fandango_utils.createDivider = createDivider
   _fandango_utils.createRow = createRow
@@ -153,20 +167,7 @@ $(document).on('pagebeforecreate', '#inTheaters', function() {
           var content = $("#inTheaters").find("#content")
           content.empty()
 
-          var list =$("<ul></ul>")
-          list.attr("data-role", "listview")
-          list.attr("data-inset", "true")
-          list.attr("data-divider-theme", "a")
-
-
-          list.append(_fandango_utils.createDivider("Opening This Week"))
-          list.append(_fandango_utils.createRow(
-            "http://demos.jquerymobile.com/1.4.0/_assets/img/album-bb.jpg",
-            "ERROR LOADING",
-            "Errors happened",
-            ""))
-
-          content.append(list)
+          content.append(_fandango_utils.createError())
 
           $.mobile.loading( "hide" )
           content.enhanceWithin()
@@ -280,20 +281,7 @@ $(document).on('pagebeforecreate', '#comingSoon', function() {
           var content = $("#comingSoon").find("#content")
           content.empty()
 
-          var list =$("<ul></ul>")
-          list.attr("data-role", "listview")
-          list.attr("data-inset", "true")
-          list.attr("data-divider-theme", "a")
-
-
-          list.append(_fandango_utils.createDivider("Opening This Week"))
-          list.append(_fandango_utils.createRow(
-            "",
-            "ERROR LOADING",
-            "Errors happened",
-            ""))
-
-          content.append(list)
+          content.append(_fandango_utils.createError())
 
           $.mobile.loading( "hide" )
           content.enhanceWithin()
@@ -389,18 +377,7 @@ $(document).on("keyup", "#search-query", function() {
             var content = $("#search").find("#results")
             content.empty()
 
-            var list =$("<ul></ul>")
-            list.attr("data-role", "listview")
-            list.attr("data-inset", "true")
-            list.attr("data-divider-theme", "a")
-
-            list.append(_fandango_utils.createRow(
-              "",
-              "ERROR LOADING",
-              "Errors happened",
-              ""))
-
-            content.append(list)
+            content.append(_fandango_utils.createError())
 
             $.mobile.loading( "hide" )
             content.enhanceWithin()
@@ -572,26 +549,19 @@ $(document).on("pagebeforeshow", "#movie", function() {
 
             $.mobile.loading( "hide" )
             $("#movieMain").show()
+            $("#movieDetails").show()
+            $("#movieTitleCard").show()
             content.enhanceWithin()
           } else if ( movieId === _fandango_utils.movie_id) {
             var content = $("#movie").find("#content")
             content.empty()
 
-            var list =$("<ul></ul>")
-            list.attr("data-role", "listview")
-            list.attr("data-inset", "true")
-            list.attr("data-divider-theme", "a")
-
-            list.append(_fandango_utils.createRow(
-              "",
-              movieId,
-              "Errors happened",
-              ""))
-
-            content.append(list)
+            content.append(_fandango_utils.createError())
 
             $.mobile.loading( "hide" )
             $("#movieMain").show()
+            $("#movieDetails").hide()
+            $("#movieTitleCard").hide()
             content.enhanceWithin()
           }
         }
