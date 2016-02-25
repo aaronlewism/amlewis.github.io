@@ -521,7 +521,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
 
             if (smartMovie.directors) {
               list.append(_fandango_utils.createDivider("Director"))
-              for (var director : smartMovie.directors) {
+              for (var director in smartMovie.directors) {
                 var thisDirector = director
                 var image = director.meta.icon
                 if (!image) {
@@ -537,7 +537,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
 
             if (smartMovie.actors) {
               list.append(_fandango_utils.createDivider("Cast"))
-              for (var actor : smartMovie.actors) {
+              for (var actor in smartMovie.actors) {
                 var thisActor = actor
                 var image = actor.meta.icon
                 if (!image) {
