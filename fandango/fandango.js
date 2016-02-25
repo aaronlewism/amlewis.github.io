@@ -488,7 +488,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
                 smartDirector.meta.url = $(this).children("[itemprop=\"url\"]").attr("content")
                 smartDirector.meta.icon = $(this).children("[itemprop=\"image\"]").attr("content")
                 smartDirector.name =  $(this).children("[itemprop=\"name\"]").attr("content")
-                smartMovie.directors.append(smartDirector)
+                smartMovie.directors.push(smartDirector)
               })
             }
 
@@ -501,7 +501,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
                 smartActor.meta.url = $(this).children("[itemprop=\"url\"]").attr("content")
                 smartActor.meta.icon = $(this).children("[itemprop=\"image\"]").attr("content")
                 smartActor.name =  $(this).children("[itemprop=\"name\"]").attr("content")
-                smartMovie.actors.append(smartActor)
+                smartMovie.actors.push(smartActor)
               })
             }
 
