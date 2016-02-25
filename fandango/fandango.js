@@ -420,6 +420,8 @@ $(document).on("pagebeforeshow", "#movie", function() {
   content.empty()
   content.enhanceWithin()
 
+  $("#movieMain").hide()
+
   var interval = setInterval(function(){
     $.mobile.loading('show');
     clearInterval(interval);
@@ -508,6 +510,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
             content.append(list)
 
             $.mobile.loading( "hide" )
+            $("#movieMain").show()
             content.enhanceWithin()
           } else if ( movieId === _fandango_utils.movie_id) {
             var content = $("#movie").find("#content")
@@ -527,6 +530,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
             content.append(list)
 
             $.mobile.loading( "hide" )
+            $("#movieMain").show()
             content.enhanceWithin()
           }
         }
