@@ -66,6 +66,7 @@ $(document).on("pagebeforeshow", "#inTheaters", function() {
   $("#navbar").show()
   $("#backButton").hide()
   $("#backButtonSpan").hide()
+  $("#shareButton").hide()
 })
 
 $(document).on('pagebeforecreate', '#inTheaters', function() {
@@ -180,6 +181,7 @@ $(document).on("pagebeforeshow", "#comingSoon", function() {
   $("#navbar").show()
   $("#backButton").hide()
   $("#backButtonSpan").hide()
+  $("#shareButton").hide()
 })
 
 $(document).on('pagebeforecreate', '#comingSoon', function() {
@@ -306,6 +308,7 @@ $(document).on("pagebeforeshow", "#search", function() {
   $("#navbar").show()
   $("#backButton").hide()
   $("#backButtonSpan").hide()
+  $("#shareButton").hide()
 })
 
 $(document).on("keyup", "#search-query", function() {
@@ -413,7 +416,9 @@ $(document).on("pagebeforeshow", "#movie", function() {
   $("#navbar").hide()
   $("#backButton").show()
   $("#backButtonSpan").show()
+  $("#shareButton").show()
 
+  $("#shareButton").click("")
   var movieId = _fandango_utils.movie_id
 
   var content = $("#movie").find("#content")
@@ -508,6 +513,8 @@ $(document).on("pagebeforeshow", "#movie", function() {
             }
 
             content.append(list)
+
+            $("#shareButton").click("")
 
             $.mobile.loading( "hide" )
             $("#movieMain").show()
