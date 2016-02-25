@@ -470,8 +470,9 @@ $(document).on("pagebeforeshow", "#movie", function() {
             desc += movieDetails.find(".movie-genre").text().replace("<br>", ", ")
 
             var smartMovie = {}
+            smartMovie["@"] = "movie"
             smartMovie.meta = {}
-            smartMovie.meta["@"] = "movie"
+            smartMovie.meta["@"] = "meta"
             smartMovie.meta.url = movie.children("[itemprop=\"url\"]").attr("content")
             smartMovie.meta.icon = movie.children("[itemprop=\"icon\"]").attr("content")
 
@@ -483,8 +484,9 @@ $(document).on("pagebeforeshow", "#movie", function() {
               smartMovie.directors = []
               directors.each(function (index) {
                 var smartDirector = {}
+                smartDirector["@"] = "person"
                 smartDirector.meta = {}
-                smartDirector.meta["@"] = "person"
+                smartDirector.meta["@"] = "meta"
                 var url = $(this).children("[itemprop=\"url\"]").attr("content")
                 if (url) {
                   smartDirector.meta.url = url
@@ -502,8 +504,9 @@ $(document).on("pagebeforeshow", "#movie", function() {
               smartMovie.actors = []
               actors.each(function (index) {
                 var smartActor = {}
-                smartActor.meta = {}
-                smartActor.meta["@"] = "person"
+                smartActor["@"] = "person"
+                smartActor.meta = {}=
+                smartActor.meta["@"] = "meta"
                 var url = $(this).children("[itemprop=\"url\"]").attr("content")
                 if (url) {
                   smartActor.meta.url = url
