@@ -395,7 +395,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
   $("#backButtonSpan").show()
   $("#shareButton").show()
 
-  $("#shareButton").click("")
+  $("#shareButton").unbind("click")
   var movieId = _fandango_utils.movie_id
 
   var content = $("#movie").find("#content")
