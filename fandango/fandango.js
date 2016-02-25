@@ -521,8 +521,8 @@ $(document).on("pagebeforeshow", "#movie", function() {
 
             if (smartMovie.directors) {
               list.append(_fandango_utils.createDivider("Director"))
-              for (var director in smartMovie.directors) {
-                var thisDirector = director
+              for (var index=0; index < smartMovie.directors.length; ++index) {
+                var director = smartMovie.directors[index]
                 var image = director.meta.icon
                 if (!image) {
                   image =  "http://images.fandango.com/r99.5/redesign/static/img/no-image-portrait.png"
@@ -531,14 +531,14 @@ $(document).on("pagebeforeshow", "#movie", function() {
                   image,
                   director.title,
                   "",
-                  new function() { wand.handdleTypedData(thisDirector, null) }))
+                  new function() { wand.handdleTypedData(director, null) }))
               }
             }
 
             if (smartMovie.actors) {
               list.append(_fandango_utils.createDivider("Cast"))
-              for (var actor in smartMovie.actors) {
-                var thisActor = actor
+              for (var index=0; index < smartMovie.actors.length; ++index) {
+                var actor = smartMovie.actors[index]
                 var image = actor.meta.icon
                 if (!image) {
                   image =  "http://images.fandango.com/r99.5/redesign/static/img/no-image-portrait.png"
@@ -547,7 +547,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
                   image,
                   actor.title,
                   "",
-                  new function() { wand.handdleTypedData(thisActor, null) }))
+                  new function() { wand.handdleTypedData(actor, null) }))
               }
             }
 
