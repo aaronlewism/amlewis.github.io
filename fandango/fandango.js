@@ -531,7 +531,7 @@ $(document).on("pagebeforeshow", "#movie", function() {
                   image,
                   director.title,
                   "",
-                  new function() { wand.handleTypedData(director, null) }))
+                  function() { wand.handleTypedData(director, null) }))
               }
             }
 
@@ -547,13 +547,13 @@ $(document).on("pagebeforeshow", "#movie", function() {
                   image,
                   actor.title,
                   "",
-                  new function() { wand.handleTypedData(actor, null) }))
+                  function() { wand.handleTypedData(actor, null) }))
               }
             }
 
             content.append(list)
 
-            $("#shareButton").click(new function() { wand.handleTypedData(smartMovie, null) })
+            $("#shareButton").click(function() { wand.handleTypedData(smartMovie, null) })
 
             $.mobile.loading( "hide" )
             $("#movieMain").show()

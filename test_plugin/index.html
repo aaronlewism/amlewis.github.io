@@ -59,9 +59,7 @@ var restaurant =  {
 }
 
 wand.handleTypedData(
-  {
-    "data": restaurant
-  },
+  restaurant,
   function (status, result) {
     var t = document.createTextNode("Handle Typed Data: " + JSON.stringify(status));
     var h = document.createElement("H1");
